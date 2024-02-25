@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.background-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure the image is behind other content */
+}
 
 :root {
   --foreground-rgb: 113, 128, 150; /* Soft blue for text */
@@ -28,14 +36,14 @@
 }
 
 .project-description-container {
-  max-width: 600px; /* Adjust as needed */
-  margin-bottom: 60px; /* Adjust as needed */
+  max-width: 600px;
+  margin-bottom: 60px;
 }
 
 .enhancement-list li {
   font-size: 16px;
   font-weight: 400;
   color: #333;
-  margin-left: 20px; /* Indent each list item */
+  margin-left: 20px;
 }
 
