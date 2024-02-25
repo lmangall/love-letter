@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --foreground-rgb: 113, 128, 150; /* Soft blue for text */
+  --background-start-rgb: 255, 253, 230; /* Pastel beige */
+  --background-end-rgb: 240, 216, 230; /* Light pastel blue */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 200, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} 
+
+.gradient-blue-sky {
+  background-image: var(--gradient-stops-blue-sky);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.project-description-container {
+  max-width: 600px; /* Adjust as needed */
+  margin-bottom: 60px; /* Adjust as needed */
+}
+
+.enhancement-list li {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  margin-left: 20px; /* Indent each list item */
+}
+

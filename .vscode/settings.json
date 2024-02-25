@@ -1,0 +1,20 @@
+{
+    "editor.tabSize": 4,
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true, // Formats your code when you save the file
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true // Automatically fixes linting issues on save
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode" // Use Prettier for JavaScript files
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode" // Use Prettier for TypeScript files
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode" // Use Prettier for JSON files
+    },
+    // Install the ESLint and Prettier extensions for better linting and formatting
+    "eslint.alwaysShowStatus": true,
+    "prettier.requireConfig": false, // Only format files that have a Prettier config
+}
