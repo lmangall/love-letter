@@ -1,10 +1,9 @@
-// Function to handle correction requests
 export default async function handleGenerateClick(req, res) {
-  // Extract the prompt from the request body
-  const userCity = req.body.prompt; // Use a descriptive name
+  // Extract both the city and name from the request body
+  const { userCity, userName } = req.body; // Assuming the request body includes both userCity and userName
 
-  // Prepare the correction request for OpenAI
-  const loveRequest = `Write in french how a young man (write at first person) arrives in "${userCity}" and fall in love with a young woman. (second person in the text : "tu") include specific details about "${userCity}" (known places, local events...)`;
+  // Update the prompt to include specific details about the city and the user's name
+  const loveRequest = `Write in French how a young man (write at first person) arrives in "${userCity}" and falls in love with "${userName}". personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
   // Create the initial message for OpenAI
   const messages = [{ role: "user", content: loveRequest }];
@@ -18,32 +17,29 @@ export default async function handleGenerateClick(req, res) {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // Use environment variable for security
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo", // Consider exploring other models for French correction
+        model: "gpt-3.5-turbo", // Adjust model as necessary
         messages: messages,
+        temperature: 0.9,
       }),
     });
 
-    // Check for successful response
+    // Check for successful response and handle accordingly
     if (response.ok) {
       const data = await response.json();
-
-      // Extract the corrected text from the response
       if (data.choices && data.choices.length > 0) {
         const loveStory = data.choices[0].message.content;
         res.status(200).json({ result: loveStory });
       } else {
-        res.status(404).json({ error: "No correction found from OpenAI." });
+        res.status(404).json({ error: "No story found from OpenAI." });
       }
     } else {
-      // Handle API errors gracefully
-      const error = await response.text(); // Get the error message
+      const error = await response.text();
       console.error("Error calling OpenAI API:", error);
       res
         .status(500)
         .json({ error: "An error occurred while processing your request." });
     }
   } catch (error) {
-    // Log and handle other errors
     console.error("Error:", error);
     res
       .status(500)

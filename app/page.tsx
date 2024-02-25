@@ -12,13 +12,15 @@ export default function Home() {
 
   async function handleGenerateClick() {
     try {
+      // Update this part to send both userCity and userName
       const response = await fetch("/api/openai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: userCity,
+          userCity, // Send userCity as is
+          userName, // Also send userName
         }),
       });
       if (!response.ok) {
@@ -27,7 +29,7 @@ export default function Home() {
       const data = await response.json();
       setloveStory(data.result);
     } catch (error) {
-      console.error("Failed to fetch OpenAi response:", error);
+      console.error("Failed to fetch OpenAI response:", error);
       setApiResponse("Failed to fetch response.");
     }
   }
