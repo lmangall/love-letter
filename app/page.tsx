@@ -59,33 +59,33 @@ export default function Home() {
             <div className="flex flex-row space-x-4">
               {/* City input field */}
               <textarea
-                className="w-[240px] text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-pink-500 resize-none mb-2"
+                className="bg-white bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20  w-[240px] text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-pink-500 resize-none mb-2"
                 placeholder="Enter your city."
                 value={userCity}
                 onChange={(e) => setUserCity(e.target.value)}
               />
               {/* Name input field */}
               <textarea
-                className="w-[240px] text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-pink-500 resize-none mb-2"
+                className="bg-white bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20  w-[240px] text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-pink-500 resize-none mb-2"
                 placeholder="Enter your name."
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
             <textarea
-              className="w-[500px] p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-pink-500 resize:none h-60 backdrop-blur-2xl"
+              className="bg-white bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 w-[500px] p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-pink-500 resize:none h-60 backdrop-blur-2xl"
               placeholder="Somebody is coming to fall in love with you"
               value={loveStory}
               onChange={(e) => setloveStory(e.target.value)}
             />
             <button
               onClick={handleGenerateClick}
-              className="w-[500px] px-4 py-2 bg-pink-500 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
+              className="bg-pink-500 bg-opacity-70 hover:bg-pink-500 w-[500px] px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
             >
               Generate (OpenAI)
             </button>
           </div>
-          <div className="justify-center mt-auto mb-8 mt-8">
+          <div className="justify-center mb-8 mt-8">
             <a
               href="https://frenchezleo.com"
               target="_blank"
