@@ -2,19 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.background-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Ensure the image is behind other content */
-}
-
+/* 
+/* 
 :root {
-  --foreground-rgb: 113, 128, 150; /* Soft blue for text */
-  --background-start-rgb: 255, 253, 230; /* Pastel beige */
-  --background-end-rgb: 240, 216, 230; /* Light pastel blue */
+  --foreground-rgb: 113, 128, 150;
+  --background-start-rgb: 255, 253, 230;
+  --background-end-rgb: 240, 216, 230;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +17,7 @@
     --background-end-rgb: 0, 0, 0;
   }
 } 
+ */ */
 
 .gradient-blue-sky {
   background-image: var(--gradient-stops-blue-sky);
