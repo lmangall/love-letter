@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 /* 
-/* 
 :root {
   --foreground-rgb: 113, 128, 150;
   --background-start-rgb: 255, 253, 230;
@@ -17,7 +16,7 @@
     --background-end-rgb: 0, 0, 0;
   }
 } 
- */ */
+ */
 
 .gradient-blue-sky {
   background-image: var(--gradient-stops-blue-sky);
