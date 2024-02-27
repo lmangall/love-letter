@@ -1,39 +1,26 @@
 import * as deepl from "deepl-node";
 
-const apiKey = process.env.DEEPL_API_KEY;
-if (!apiKey) {
-  throw new Error("DEEPL_API_KEY environment variable not defined");
-}
+export default async function translate(req, res) {
+  const { text, targetLang = "EN-US" } = req.body;
 
-// Optionally, specify the DeepL server URL via environment variables
-const serverUrl = process.env.DEEPL_SERVER_URL;
+  const apiKey = process.env.DEEPL_API_KEY;
+  if (!apiKey) {
+    return res
+      .status(500)
+      .json({ error: "DEEPL_API_KEY environment variable not defined" });
+  }
 
-// Create a translator instance
-const translator = new deepl.Translator(
-  apiKey,
-  serverUrl ? { serverUrl } : undefined
-);
+  const serverUrl = process.env.DEEPL_SERVER_URL;
+  const translator = new deepl.Translator(
+    apiKey,
+    serverUrl ? { serverUrl } : undefined
+  );
 
-// Function to translate text using the DeepL API
-export const translateTextWithDeepL = async (text, targetLang = "EN-US") => {
   try {
-    // Perform the translation
     const result = await translator.translateText(text, null, targetLang);
-
-    // Return the translated text
-    return result.text;
+    res.status(200).json({ translatedText: result.text });
   } catch (error) {
     console.error("Translation error:", error);
-    return "Translation failed.";
+    res.status(500).json({ error: "Translation failed." });
   }
-};
-
-(async () => {
-  try {
-    // Replace 'Hello, world!' with  source text and 'FR' with your target language code
-    const translatedText = await translateTextWithDeepL("Hello, world!", "FR");
-    console.log(translatedText); // Outputs translated text
-  } catch (error) {
-    console.error(error);
-  }
-})();
+}

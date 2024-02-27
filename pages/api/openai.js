@@ -1,26 +1,51 @@
-import * as deepl from "deepl-node";
+export default async function handleGenerateClick(req, res) {
+  // Extract both the city and name from the request body
+  const { userCity, userName, userGender, userOrientation, userTaste } =
+    req.body;
 
-export default async function translate(req, res) {
-  const { text, targetLang = "EN-US" } = req.body;
+  // Update the prompt to include specific details about the city and the user's name
+  const loveRequest = `Write in French how a young "${userOrientation}" (write at first person) arrives in "${userCity}" and falls in love with "${userName}" (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
-  const apiKey = process.env.DEEPL_API_KEY;
-  if (!apiKey) {
-    return res
-      .status(500)
-      .json({ error: "DEEPL_API_KEY environment variable not defined" });
-  }
+  console.log("Sending prompt to OpenAI:", loveRequest); // Log the prompt being sent to OpenAI
 
-  const serverUrl = process.env.DEEPL_SERVER_URL;
-  const translator = new deepl.Translator(
-    apiKey,
-    serverUrl ? { serverUrl } : undefined
-  );
+  // Create the initial message for OpenAI
+  const messages = [{ role: "user", content: loveRequest }];
 
   try {
-    const result = await translator.translateText(text, null, targetLang);
-    res.status(200).json({ translatedText: result.text });
+    // Call OpenAI API with the prepared message
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // Use environment variable for security
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo", // Adjust model as necessary
+        messages: messages,
+        temperature: 0.9,
+      }),
+    });
+
+    // Check for successful response and handle accordingly
+    if (response.ok) {
+      const data = await response.json();
+      if (data.choices && data.choices.length > 0) {
+        const loveStory = data.choices[0].message.content;
+        res.status(200).json({ result: loveStory });
+      } else {
+        res.status(404).json({ error: "No story found from OpenAI." });
+      }
+    } else {
+      const error = await response.text();
+      console.error("Error calling OpenAI API:", error);
+      res
+        .status(500)
+        .json({ error: "An error occurred while processing your request." });
+    }
   } catch (error) {
-    console.error("Translation error:", error);
-    res.status(500).json({ error: "Translation failed." });
+    console.error("Error:", error);
+    res
+      .status(500)
+      .json({ error: "An internal error occurred. Please try again later." });
   }
 }
