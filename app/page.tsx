@@ -82,7 +82,17 @@ export default function Home() {
             >
               {loveStory || "Somebody is coming to fall in love with you..."}
             </div>
-            <Button onClick={() => fetchLoveStory(userCity, userName)}>
+            <Button
+              onClick={() =>
+                fetchLoveStory(
+                  userCity,
+                  userName,
+                  userGender,
+                  userOrientation,
+                  userTaste
+                )
+              }
+            >
               Generate (OpenAI)
             </Button>
             {error && <p className="text-red-500">{error}</p>}
