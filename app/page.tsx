@@ -5,6 +5,7 @@ import Image from "next/image";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 import useFetchLoveStory from "../hooks/useFetchLoveStory";
+import useTranslateText from "../hooks/useTranslateText";
 import SettingsModal from "../components/SettingsModal"; // Import the modal component
 
 export default function Home() {
@@ -25,6 +26,9 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
+  const { translateText, translatedText, translationError } =
+    useTranslateText();
+
   return (
     <div className="background-image-container">
       <Image
@@ -44,12 +48,19 @@ export default function Home() {
                 Enter the name of your city to learn french while living your
                 own love story.
               </p>
+
               <button
                 onClick={handleOpenModal}
                 className="fixed bottom-4 right-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
               >
                 Preferences
               </button>
+              <button
+                onClick={() => translateText("Your text to translate", "FR")}
+              >
+                Translate
+              </button>
+              <p>{translatedText || "Translated text will appear here"}</p>
 
               {/* Settings Modal */}
               <SettingsModal
