@@ -18,6 +18,8 @@
 } 
  */
 
+ 
+
 .gradient-blue-sky {
   background-image: var(--gradient-stops-blue-sky);
 }
