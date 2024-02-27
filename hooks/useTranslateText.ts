@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const useTranslateText = () => {
-  const [translatedText, setTranslatedText] = useState("");
-  const [translationError, setTranslationError] = useState("");
+  const [translatedText, setTranslatedText] = useState<string>("");
+  const [translationError, setTranslationError] = useState<string>("");
 
-  const translateText = async (text, targetLang = "EN-US") => {
+  const translateText = async (text: string, targetLang: string = "EN-US") => {
     try {
       const response = await fetch("/api/deepl", {
         method: "POST",
