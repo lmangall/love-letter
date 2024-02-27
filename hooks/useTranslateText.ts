@@ -11,7 +11,7 @@ const useTranslateText = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text, targetLang }),
+        body: JSON.stringify({ text, null: targetLang }), //null is for the source language
       });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

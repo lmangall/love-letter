@@ -29,6 +29,14 @@ export default function Home() {
   const { translateText, translatedText, translationError } =
     useTranslateText();
 
+  const handleTextSelection = async () => {
+    const selection = window.getSelection();
+    if (selection && selection.toString()) {
+      const text = selection.toString();
+      await translateText(text, "FR"); // Or any target language code
+    }
+  };
+
   return (
     <div className="background-image-container">
       <Image
@@ -55,12 +63,12 @@ export default function Home() {
               >
                 Preferences
               </button>
-              <button
+              {/* <button
                 onClick={() => translateText("Your text to translate", "FR")}
               >
                 Translate
               </button>
-              <p>{translatedText || "Translated text will appear here"}</p>
+              <p>{translatedText || "Translated text will appear here"}</p> */}
 
               {/* Settings Modal */}
               <SettingsModal
@@ -90,6 +98,7 @@ export default function Home() {
               className="bg-white bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 w-[500px] p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-y-auto"
               style={{ maxHeight: "50vh" }}
               aria-readonly="true"
+              onMouseUp={handleTextSelection} // This ensures text selection triggers the translation
             >
               {loveStory || "Somebody is coming to fall in love with you..."}
             </div>
@@ -123,6 +132,8 @@ export default function Home() {
               />
             </a>
           </div>
+          <p>{translatedText || "Translated text will appear here"}</p>{" "}
+          {/* Display translated text here */}
         </div>
       </div>
     </div>
