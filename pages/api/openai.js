@@ -6,6 +6,8 @@ export default async function handleGenerateClick(req, res) {
   // Update the prompt to include specific details about the city and the user's name
   const loveRequest = `Write in French how a young "${userOrientation}" (write at first person) arrives in "${userCity}" and falls in love with "${userName}" (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
+  console.log("Sending prompt to OpenAI:", loveRequest); // Log the prompt being sent to OpenAI
+
   // Create the initial message for OpenAI
   const messages = [{ role: "user", content: loveRequest }];
 
