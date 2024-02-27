@@ -15,9 +15,9 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
             value={userGender}
             onChange={(e) => setUserGender(e.target.value)}
             options={[
-              { value: "woman", label: "Woman" },
-              { value: "man", label: "Man" },
-              { value: "non-binary", label: "Non-binary" },
+              { value: "woman", label: "I identify as a woman" },
+              { value: "man", label: "I identify as a man" },
+              { value: "non-binary person", label: "I am Non-binary" },
             ]}
           />
         </div>
@@ -27,9 +27,9 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
             value={userOrientation}
             onChange={(e) => setUserOrientation(e.target.value)}
             options={[
-              { value: "a man", label: "A man" },
-              { value: "a woman", label: "A woman" },
-              { value: "anyone", label: "Anyone" },
+              { value: "man", label: "I am attracted to men" },
+              { value: "woman", label: "I am attracted to women" },
+              { value: "man or woman", label: "I am bisexual" },
             ]}
           />
         </div>
