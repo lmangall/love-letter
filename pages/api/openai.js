@@ -1,9 +1,10 @@
 export default async function handleGenerateClick(req, res) {
   // Extract both the city and name from the request body
-  const { userCity, userName } = req.body; // Assuming the request body includes both userCity and userName
+  const { userCity, userName, userGender, userOrientation, userTaste } =
+    req.body;
 
   // Update the prompt to include specific details about the city and the user's name
-  const loveRequest = `Write in French how a young man (write at first person) arrives in "${userCity}" and falls in love with "${userName}". personalize the story with really specific details about "${userCity}" (known places, local events...).`;
+  const loveRequest = `Write in French how a young "${userOrientation}" (write at first person) arrives in "${userCity}" and falls in love with "${userName}" (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
   // Create the initial message for OpenAI
   const messages = [{ role: "user", content: loveRequest }];

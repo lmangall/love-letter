@@ -4,7 +4,13 @@ const useFetchLoveStory = () => {
   const [loveStory, setLoveStory] = useState("");
   const [error, setError] = useState("");
 
-  const fetchLoveStory = async (userCity: string, userName: string) => {
+  const fetchLoveStory = async (
+    userCity: string,
+    userName: string,
+    userGender: string,
+    userOrientation: string,
+    userTaste: string
+  ) => {
     try {
       const response = await fetch("/api/openai", {
         method: "POST",
