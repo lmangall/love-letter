@@ -22,7 +22,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
           />
         </div>
         {/* Orientation Select */}
-        <div className="mb-4">
+        <div className="">
           <SelectField
             value={userOrientation}
             onChange={(e) => setUserOrientation(e.target.value)}
@@ -34,7 +34,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
           />
 </div>
           {/* Target language*/}
-            <div className="mb-4">
+            <div className="">
           <SelectField
             value={userTarget}
             onChange={(e) => setTargetLanguage(e.target.value)}
@@ -71,11 +71,11 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
   </label>
 
         {/* Taste Input */}
-        <div className="">
+        <div className="mt-4 ">
           <input
-    className="bg-white h-[60px] w-full bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 font-normal border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 resize-none"
+    className="bg-white h-[30px] w-full bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 font-normal border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 resize-none"
     type="text"
-            placeholder="Enter your taste."
+            placeholder="Enter stuff you like..."
             value={userTaste}
             onChange={(e) => setUserTaste(e.target.value)}
           />

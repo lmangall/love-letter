@@ -19,6 +19,7 @@ export default function Home() {
   const [userTarget, setTargetLanguage] = useState("french");
   const [isQueer, setIsQueer] = useState(false);
   const [isHot, setIsHot] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state to manage loading status
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -169,9 +170,8 @@ export default function Home() {
           </div>
         </div>
         {/* New column with two rows */}
-        {/* <div className="flex p-6 fixed top-[10%] right-1/2 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh] overflow-hidden space-x-4"> */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
-          {/* Cell 1 */}
+          {/* right column*/}
           <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1 whitespace-pre-wrap">
             <div>
               {translations.map((translation, index) => (

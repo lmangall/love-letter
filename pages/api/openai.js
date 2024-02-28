@@ -15,10 +15,10 @@ export default async function handleGenerateClick(req, res) {
   let loveRequest = `Write a story strictly in ${userTarget} language: a young ${userOrientation} (write at first person) arrives in ${userCity} and falls in love with ${userName} (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
   if (isQueer) {
-    loveRequest += ` "Include queer elements in the story.`;
+    loveRequest += ` Include queer elements in the story.`;
   }
   if (isHot) {
-    loveRequest += ` "Make it hot.`;
+    loveRequest += ` and Make it hot.`;
   }
 
   console.log("Sending prompt to OpenAI:", loveRequest); // Log the prompt being sent to OpenAI
