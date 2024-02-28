@@ -26,7 +26,7 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  const { translateText, translatedText, translationError } =
+  const { translateText, translatedText, accumulatedTranslations } =
     useTranslateText();
 
   const handleTextSelection = async () => {
@@ -88,7 +88,7 @@ export default function Home() {
                 Preferences
               </button>
               <div
-                className="flex bg-white w-full min-h-[100px] max-h-[40vh] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-hidden"
+                className="flex bg-white w-full min-h-[200px] max-h-[40vh] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-hidden"
                 aria-readonly="true"
                 onMouseUp={handleTextSelection} // This ensures text selection triggers the translation
               >
@@ -109,7 +109,6 @@ export default function Home() {
               </Button>
               {error && <p className="text-red-500">{error}</p>}
             </div>
-            <p>{translatedText || "Translated text will appear here"}</p>{" "}
             <div className="justify-center mb-8 mt-8">
               <a
                 href="https://frenchezleo.com"
@@ -138,9 +137,9 @@ export default function Home() {
             {/* Content of the first cell */}
           </div>
           {/* Cell 2 */}
-          <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1">
-            {/* Content of the second cell */}
-          </div>
+          <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1 whitespace-pre-wrap">
+            <p>{accumulatedTranslations}</p>
+          </div>{" "}
         </div>
       </div>
     </div>

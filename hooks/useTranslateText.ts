@@ -3,6 +3,7 @@ import { useState } from "react";
 const useTranslateText = () => {
   const [translatedText, setTranslatedText] = useState<string>("");
   const [translationError, setTranslationError] = useState<string>("");
+  const [accumulatedTranslations, setAccumulatedTranslations] = useState("");
 
   const translateText = async (text: string, targetLang: string = "EN-US") => {
     try {
@@ -18,13 +19,22 @@ const useTranslateText = () => {
       }
       const data = await response.json();
       setTranslatedText(data.translatedText);
+      const newTranslation = data.translatedText + "\n";
+      setAccumulatedTranslations(
+        (prevTranslations) => prevTranslations + newTranslation
+      );
     } catch (error) {
       console.error("Failed to fetch DeepL response:", error);
       setTranslationError("Failed to fetch translation.");
     }
   };
 
-  return { translateText, translatedText, translationError };
+  return {
+    translateText,
+    translatedText,
+    translationError,
+    accumulatedTranslations,
+  };
 };
 
 export default useTranslateText;
