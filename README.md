@@ -7,6 +7,14 @@ To ensure that the text copied to the clipboard or sent by email is plain text a
 Step 1: Convert HTML to Plain Text for Clipboard
 For the handleCopyNotes function, ensure you're joining and copying the plain text versions of your translations. If your translations are stored as plain text, this is straightforward. If they're stored as HTML, you'll need a utility function to strip HTML tags:
 
+---
+
+https://developers.deepl.com/docs/api-reference/translate#translate
+https://github.com/DeepLcom/deepl-node/blob/main/examples/typescript/index.ts
+https://github.com/DeepLcom/deepl-node?tab=readme-ov-file#usage
+
+---
+
 TO DO:
 
 - change the output form => blurred space that adapt to text length

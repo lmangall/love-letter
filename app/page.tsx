@@ -10,9 +10,9 @@ import SettingsModal from "../components/SettingsModal"; // Import the modal com
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const { fetchLoveStory, loveStory, error } = useFetchLoveStory();
   const [userCity, setUserCity] = useState("");
   const [userName, setUserName] = useState("");
-  const { fetchLoveStory, loveStory, error } = useFetchLoveStory();
   const [userGender, setUserGender] = useState("woman");
   const [userOrientation, setUserOrientation] = useState("a man");
   const [userTaste, setUserTaste] = useState("");
@@ -41,7 +41,7 @@ export default function Home() {
     const selection = window.getSelection();
     if (selection && selection.toString()) {
       const text = selection.toString();
-      await translateText(text, "FR"); // Or any target language code
+      await translateText(text); //           THIS WAS CHANGED LATELY
     }
   };
 
