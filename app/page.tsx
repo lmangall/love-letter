@@ -137,7 +137,8 @@ export default function Home() {
                     userGender,
                     userOrientation,
                     userTaste,
-                    userTarget
+                    userTarget,
+                    isQueer
                   )
                 }
               >
