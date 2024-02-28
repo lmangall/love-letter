@@ -24,7 +24,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
         {/* Orientation Select */}
         <div className="mb-4">
           <SelectField
-            value={userOrientation  || "french"}
+            value={userOrientation}
             onChange={(e) => setUserOrientation(e.target.value)}
             options={[
               { value: "man", label: "I am attracted to men" },
@@ -36,7 +36,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
           {/* Target language*/}
             <div className="mb-4">
           <SelectField
-            value={userTarget || "french"}
+            value={userTarget}
             onChange={(e) => setTargetLanguage(e.target.value)}
             options={[
               { value: "french", label: "I want to learn french" },
@@ -56,11 +56,11 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
       checked={isQueer}
       onChange={(e) => setIsQueer(e.target.checked)}
     />
-    <span className="ml-2">I identify as queer <span className="text-purple-500">#berlin</span></span>
+    <span className="ml-2">I identify as queer <span className="text-purple-300">#berlin</span></span>
   </label>
 
             {/* Hot Checkbox */}
-  <label className="inline-flex items-center">
+            <label className="inline-flex items-center">
     <input
       type="checkbox"
       className="form-checkbox"
@@ -69,7 +69,6 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
     />
     <span className="ml-2">Make it <span className="text-red-500">hot</span></span>
   </label>
-
 
         {/* Taste Input */}
         <div className="">
