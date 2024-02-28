@@ -59,7 +59,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
     <span className="ml-2">I identify as queer <span className="text-purple-300">#berlin</span></span>
   </label>
 
-            {/* Hot Checkbox */}
+            {/* Hot Checkbox
             <label className="inline-flex items-center">
     <input
       type="checkbox"
@@ -68,7 +68,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
       onChange={(e) => setIsHot(e.target.checked)}
     />
     <span className="ml-2">Make it <span className="text-red-500">hot</span></span>
-  </label>
+  </label> */}
 
         {/* Taste Input */}
         <div className="">
