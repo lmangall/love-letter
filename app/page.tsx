@@ -27,7 +27,7 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  const stripHtml = (html) => {
+  const stripHtml: (html: string) => string = (html) => {
     // A simple way to remove HTML tags from a string
     const tmp = document.createElement("DIV");
     tmp.innerHTML = html;
