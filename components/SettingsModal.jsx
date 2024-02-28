@@ -41,7 +41,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
       checked={isQueer}
       onChange={(e) => setIsQueer(e.target.checked)}
     />
-    <span className="ml-2">I identify as queer #berlin</span>
+    <span className="ml-2">I identify as queer <span className="text-purple-500">#berlin</span></span>
   </label>
 </div>
           {/* Target language*/}

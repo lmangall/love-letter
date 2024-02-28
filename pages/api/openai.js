@@ -11,7 +11,7 @@ export default async function handleGenerateClick(req, res) {
   } = req.body;
 
   // Update the prompt to include specific details about the city and the user's name
-  let loveRequest = `Write a sory in ${userTarget} language only: a young ${userOrientation} (write at first person) arrives in ${userCity} and falls in love with ${userName} (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
+  let loveRequest = `Write a story strictly in ${userTarget} language: a young ${userOrientation} (write at first person) arrives in ${userCity} and falls in love with ${userName} (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
   if (isQueer) {
     loveRequest += ` "Include queer elements in the story.`;
