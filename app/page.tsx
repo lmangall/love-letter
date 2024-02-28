@@ -27,6 +27,13 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
+  const stripHtml = (html) => {
+    // A simple way to remove HTML tags from a string
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  };
+
   const { translateText, translations, translationError } = useTranslateText();
 
   const handleTextSelection = async () => {
@@ -37,14 +44,26 @@ export default function Home() {
     }
   };
 
+  const handleEmailTranslations = () => {
+    const emailBody = translations
+      .map(stripHtml)
+      .join("\n")
+      .replace(/#/g, "%23");
+    const subject = "My Translations";
+    const mailtoUrl = `mailto:?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoUrl;
+  };
+
   const handleCopyNotes = async () => {
-    const textToCopy = translations.join("\n"); // Join translations with newline characters
+    const textToCopy = translations.map(stripHtml).join("\n");
     try {
       await navigator.clipboard.writeText(textToCopy);
-      alert("Translations copied to clipboard!"); // Feedback to the user (consider a more user-friendly approach)
+      alert("Translations copied to clipboard!");
     } catch (error) {
       console.error("Failed to copy:", error);
-      alert("Failed to copy translations."); // Error feedback
+      alert("Failed to copy translations.");
     }
   };
 
@@ -164,7 +183,7 @@ export default function Home() {
               Copy translations
             </button>
             <button
-              onClick={handleCopyNotes}
+              onClick={handleEmailTranslations}
               className="m-1 mb-4 w-1/2 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 mt-4"
             >
               Email translations
