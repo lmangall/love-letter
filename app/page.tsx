@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import InputField from "../components/InputField";
@@ -14,7 +16,7 @@ export default function Home() {
   const [userGender, setUserGender] = useState("woman");
   const [userOrientation, setUserOrientation] = useState("a man");
   const [userTaste, setUserTaste] = useState("");
-  const [userTarget, setTargetLanguage] = useState("french");
+  const [userTarget, setTargetLanguage] = useState("");
   const [isQueer, setIsQueer] = useState(false);
   const [isHot, setIsHot] = useState(false);
 
