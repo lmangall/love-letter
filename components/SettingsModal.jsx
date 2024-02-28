@@ -2,7 +2,7 @@
 import React from 'react';
 import SelectField from './SelectField';
 
-const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste, userTarget, setTargetLanguage}) => {
+const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste, userTarget, setTargetLanguage, isQueer, setIsQueer}) => {
   if (!isOpen) return null;
 
   return (
@@ -32,6 +32,18 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
               { value: "man or woman", label: "I am bisexual" },
             ]}
           />
+          {/* Queer Checkbox */}
+<div className="mb-4">
+  <label className="inline-flex items-center">
+    <input
+      type="checkbox"
+      className="form-checkbox"
+      checked={isQueer}
+      onChange={(e) => setIsQueer(e.target.checked)}
+    />
+    <span className="ml-2">I identify as queer #berlin</span>
+  </label>
+</div>
           {/* Target language*/}
             <div className="mb-4">
           <SelectField

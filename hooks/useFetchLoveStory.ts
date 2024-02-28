@@ -10,7 +10,8 @@ const useFetchLoveStory = () => {
     userGender: string,
     userOrientation: string,
     userTaste: string,
-    userTarget: string
+    userTarget: string,
+    isQueer: boolean
   ) => {
     try {
       const response = await fetch("/api/openai", {
@@ -25,6 +26,7 @@ const useFetchLoveStory = () => {
           userOrientation,
           userTaste,
           userTarget,
+          isQueer,
         }),
       });
       if (!response.ok) {

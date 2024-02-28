@@ -17,6 +17,7 @@ export default function Home() {
   const [userOrientation, setUserOrientation] = useState("a man");
   const [userTaste, setUserTaste] = useState("");
   const [userTarget, setTargetLanguage] = useState("");
+  const [isQueer, setIsQueer] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -81,7 +82,7 @@ export default function Home() {
             <div className="flex flex-col items-center bg-gradient-radial ">
               <div className="flex flex-col items-center">
                 <h1 className="text-3xl text-white font-bold mb-4">
-                  Aime-moi chez moi
+                  Gimme love
                 </h1>
                 <p className="mb-8 bold">
                   Enter the name of your city to learn french while living your
@@ -99,6 +100,8 @@ export default function Home() {
                   setUserTaste={setUserTaste}
                   userTarget={userTarget}
                   setTargetLanguage={setTargetLanguage}
+                  isQueer={isQueer}
+                  setIsQueer={setIsQueer}
                 />
               </div>
               <div className="flex flex-row space-x-4">
