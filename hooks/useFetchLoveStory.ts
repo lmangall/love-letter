@@ -9,7 +9,8 @@ const useFetchLoveStory = () => {
     userName: string,
     userGender: string,
     userOrientation: string,
-    userTaste: string
+    userTaste: string,
+    userTarget: string
   ) => {
     try {
       const response = await fetch("/api/openai", {
@@ -17,7 +18,14 @@ const useFetchLoveStory = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userCity, userName }),
+        body: JSON.stringify({
+          userCity,
+          userName,
+          userGender,
+          userOrientation,
+          userTaste,
+          userTarget,
+        }),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

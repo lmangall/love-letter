@@ -2,7 +2,7 @@
 import React from 'react';
 import SelectField from './SelectField';
 
-const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste }) => {
+const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste, userTarget, setTargetLanguage}) => {
   if (!isOpen) return null;
 
   return (
@@ -10,7 +10,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
       <div className="p-6 bg-pink-300 bg-opacity-80 fixed top-[10%] left-1/2 transform -translate-x-1/2 rounded-lg border border-1 overflow-hidden">
         <h2 className="text-xl text-center font-bold mb-4">Settings</h2>
         {/* Gender Select */}
-        <div className="mb-4">
+        <div className="">
           <SelectField
             value={userGender}
             onChange={(e) => setUserGender(e.target.value)}
@@ -32,12 +32,26 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
               { value: "man or woman", label: "I am bisexual" },
             ]}
           />
-        </div>
+          {/* Target language*/}
+            <div className="mb-4">
+          <SelectField
+            value={userTarget}
+            onChange={(e) => setTargetLanguage(e.target.value)}
+            options={[
+              { value: "FR", label: "I want to learn french" },
+              { value: "DE", label: "I want to learn german" },
+              { value: "ES", label: "I want to learn spanish" },
+              { value: "IT", label: "I want to learn italian" },
+              { value: "PL", label: "I want to learn polish" },
+            ]}
+          />
+                  </div>
+
         {/* Taste Input */}
-        <div className="mb-4">
+        <div className="">
           <input
-              className="bg-white bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-40 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-y-auto"
-			  type="text"
+    className="bg-white h-[60px] w-full bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 font-normal border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 resize-none"
+    type="text"
             placeholder="Enter your taste."
             value={userTaste}
             onChange={(e) => setUserTaste(e.target.value)}
@@ -54,6 +68,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

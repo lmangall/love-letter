@@ -16,6 +16,7 @@ export default function Home() {
   const [userGender, setUserGender] = useState("woman");
   const [userOrientation, setUserOrientation] = useState("a man");
   const [userTaste, setUserTaste] = useState("");
+  const [userTarget, setTargetLanguage] = useState("");
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -26,8 +27,7 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  const { translateText, translatedText, accumulatedTranslations } =
-    useTranslateText();
+  const { translateText, translations, translationError } = useTranslateText();
 
   const handleTextSelection = async () => {
     const selection = window.getSelection();
@@ -67,6 +67,8 @@ export default function Home() {
                   setUserOrientation={setUserOrientation}
                   userTaste={userTaste}
                   setUserTaste={setUserTaste}
+                  userTarget={userTarget}
+                  setTargetLanguage={setTargetLanguage}
                 />
               </div>
               <div className="flex flex-row space-x-4">
@@ -88,11 +90,11 @@ export default function Home() {
                 Preferences
               </button>
               <div
-                className="flex bg-white w-full min-h-[200px] max-h-[40vh] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-hidden"
+                className="flex bg-white w-full min-h-[200px] max-h-[30vh] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-y-auto"
                 aria-readonly="true"
                 onMouseUp={handleTextSelection} // This ensures text selection triggers the translation
               >
-                {loveStory || "Somebody is coming to fall in love with you..."}
+                {loveStory || "Somebody is on his way..."}
               </div>
               <Button
                 onClick={() =>
@@ -101,11 +103,12 @@ export default function Home() {
                     userName,
                     userGender,
                     userOrientation,
-                    userTaste
+                    userTaste,
+                    userTarget
                   )
                 }
               >
-                Generate (OpenAI)
+                Generate (be patient)
               </Button>
               {error && <p className="text-red-500">{error}</p>}
             </div>
@@ -131,14 +134,18 @@ export default function Home() {
         {/* <div className="flex p-6 fixed top-[10%] right-1/2 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh] overflow-hidden space-x-4"> */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
           {/* Cell 1 */}
-          <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1">
-            <p>{translatedText || "Translated text will appear here"}</p>
-
-            {/* Content of the first cell */}
-          </div>
-          {/* Cell 2 */}
           <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1 whitespace-pre-wrap">
-            <p>{accumulatedTranslations}</p>
+            <div>
+              {translations.map((translation, index) => (
+                <p
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: translation }}
+                />
+              ))}
+              {translationError && (
+                <p className="text-red-500">{translationError}</p>
+              )}
+            </div>
           </div>{" "}
         </div>
       </div>
