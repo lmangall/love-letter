@@ -1,3 +1,11 @@
+TO DO:
+
+- responsive
+- escape the settings with esc and click out
+- max number of words to translate
+- Favicon
+- emoji
+
 To modify your useTranslateText hook to include the original text in bold followed by a colon and then the translation, you need to adjust how you're handling and storing translations. Since you want to keep a visual distinction between the original text and its translation, you'll likely need to store translations as objects or HTML strings that can retain formatting information.
 
 Here's an approach using HTML strings to store each translation, allowing you to use <strong> tags for bolding the original text. Note, however, that injecting HTML directly into the DOM can be risky if the content includes user input, due to potential cross-site scripting (XSS) vulnerabilities. Always ensure that any dynamic content is properly sanitized.

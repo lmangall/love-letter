@@ -20,6 +20,10 @@ export default function Home() {
   const [isQueer, setIsQueer] = useState(false);
   const [isHot, setIsHot] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // New state to manage loading status
+  const storyPrompt: string = `Through the power of AI, we can generate a love story for you.
+  Just fill in the details and click the button. You can
+  highlight groups of words you don't understand and we'll
+  translate them for you, right on the right.`;
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -89,8 +93,8 @@ export default function Home() {
                 <p className="mb-8 bold">
                   Through the power of AI, we can generate a love story for you.
                   Just fill in the details and click the button. You can
-                  highlight groups of words you don't understand and we'll
-                  translate them for you, right on the right.
+                  highlight groups of words you don&#39;'t understand and
+                  we&#39;'ll translate them for you, right on the right.
                 </p>
                 {/* Settings Modal */}
                 <SettingsModal
