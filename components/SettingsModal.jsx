@@ -2,7 +2,7 @@
 import React from 'react';
 import SelectField from './SelectField';
 
-const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste, userTarget, setTargetLanguage, isQueer, setIsQueer}) => {
+const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste, userTarget, setTargetLanguage, isQueer, setIsQueer, isHot, setIsHot}) => {
   if (!isOpen) return null;
 
   return (
@@ -24,14 +24,29 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
         {/* Orientation Select */}
         <div className="mb-4">
           <SelectField
-            value={userOrientation}
+            value={userOrientation  || "french"}
             onChange={(e) => setUserOrientation(e.target.value)}
             options={[
               { value: "man", label: "I am attracted to men" },
               { value: "woman", label: "I am attracted to women" },
-              { value: "man or woman", label: "I am bisexual" },
+              { value: "bisexual", label: "I am bisexual" },
             ]}
           />
+</div>
+          {/* Target language*/}
+            <div className="mb-4">
+          <SelectField
+            value={userTarget || "french"}
+            onChange={(e) => setTargetLanguage(e.target.value)}
+            options={[
+              { value: "french", label: "I want to learn french" },
+              { value: "german", label: "I want to learn german" },
+              { value: "spanish", label: "I want to learn spanish" },
+              { value: "italian", label: "I want to learn italian" },
+              { value: "polish", label: "I want to learn polish" },
+            ]}
+          />
+        </div>
           {/* Queer Checkbox */}
 <div className="mb-4">
   <label className="inline-flex items-center">
@@ -43,21 +58,18 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
     />
     <span className="ml-2">I identify as queer <span className="text-purple-500">#berlin</span></span>
   </label>
-</div>
-          {/* Target language*/}
-            <div className="mb-4">
-          <SelectField
-            value={userTarget}
-            onChange={(e) => setTargetLanguage(e.target.value)}
-            options={[
-              { value: "FR", label: "I want to learn french" },
-              { value: "DE", label: "I want to learn german" },
-              { value: "ES", label: "I want to learn spanish" },
-              { value: "IT", label: "I want to learn italian" },
-              { value: "PL", label: "I want to learn polish" },
-            ]}
-          />
-                  </div>
+
+            {/* Hot Checkbox */}
+  <label className="inline-flex items-center">
+    <input
+      type="checkbox"
+      className="form-checkbox"
+      checked={isHot}
+      onChange={(e) => setIsHot(e.target.checked)}
+    />
+    <span className="ml-2">Make it <span className="text-red-500">hot</span></span>
+  </label>
+
 
         {/* Taste Input */}
         <div className="">

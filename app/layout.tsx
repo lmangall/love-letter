@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Metadata for the web page
 export const metadata: Metadata = {
-  title: "L'amour à la maison",
+  title: "Gimme love",
   description: "WIP frenchezleo.com",
 };
 

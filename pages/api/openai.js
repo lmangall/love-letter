@@ -8,6 +8,7 @@ export default async function handleGenerateClick(req, res) {
     userTaste,
     userTarget,
     isQueer,
+    isHot,
   } = req.body;
 
   // Update the prompt to include specific details about the city and the user's name
@@ -16,6 +17,10 @@ export default async function handleGenerateClick(req, res) {
   if (isQueer) {
     loveRequest += ` "Include queer elements in the story.`;
   }
+  if (isHot) {
+    loveRequest += ` "Make it hot.`;
+  }
+
   console.log("Sending prompt to OpenAI:", loveRequest); // Log the prompt being sent to OpenAI
 
   // Create the initial message for OpenAI

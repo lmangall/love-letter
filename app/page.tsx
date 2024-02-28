@@ -16,8 +16,9 @@ export default function Home() {
   const [userGender, setUserGender] = useState("woman");
   const [userOrientation, setUserOrientation] = useState("a man");
   const [userTaste, setUserTaste] = useState("");
-  const [userTarget, setTargetLanguage] = useState("");
+  const [userTarget, setTargetLanguage] = useState("french");
   const [isQueer, setIsQueer] = useState(false);
+  const [isHot, setIsHot] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -102,6 +103,8 @@ export default function Home() {
                   setTargetLanguage={setTargetLanguage}
                   isQueer={isQueer}
                   setIsQueer={setIsQueer}
+                  isHot={isHot}
+                  setIsHot={setIsHot}
                 />
               </div>
               <div className="flex flex-row space-x-4">
@@ -138,7 +141,8 @@ export default function Home() {
                     userOrientation,
                     userTaste,
                     userTarget,
-                    isQueer
+                    isQueer,
+                    isHot
                   )
                 }
               >
