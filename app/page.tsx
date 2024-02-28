@@ -87,8 +87,10 @@ export default function Home() {
                   Gimme love
                 </h1>
                 <p className="mb-8 bold">
-                  Enter the name of your city to learn french while living your
-                  own love story.
+                  Through the power of AI, we can generate a love story for you.
+                  Just fill in the details and click the button. You can
+                  highlight groups of words you don't understand and we'll
+                  translate them for you, right on the right.
                 </p>
                 {/* Settings Modal */}
                 <SettingsModal
