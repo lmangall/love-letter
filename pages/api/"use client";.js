@@ -85,6 +85,7 @@ export default function Home() {
                 isQueer={isQueer}
                 setIsQueer={setIsQueer}
                 isHot={isHot}
+                setIsHot={setIsHot}
               />
             </div>
             <div className="flex flex-row space-x-4">
