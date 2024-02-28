@@ -115,7 +115,7 @@ export default function Home() {
               </div>
               <button
                 onClick={handleOpenModal}
-                className=" m-1 mb-4 w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700  mt-4"
+                className=" m-1 mb-4 w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-600  mt-4"
               >
                 Preferences
               </button>
@@ -176,19 +176,19 @@ export default function Home() {
                 <p className="text-red-500">{translationError}</p>
               )}
             </div>
-            <button
-              onClick={handleCopyNotes}
-              className="m-1 mb-4 w-1/2 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 mt-4"
-            >
-              Copy translations
-            </button>
-            <button
-              onClick={handleEmailTranslations}
-              className="m-1 mb-4 w-1/2 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 mt-4"
-            >
-              Email translations
-            </button>
-          </div>{" "}
+          </div>
+          <button
+            onClick={handleCopyNotes}
+            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+          >
+            Copy translations
+          </button>
+          <button
+            onClick={handleEmailTranslations}
+            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+          >
+            Email translations
+          </button>
         </div>
       </div>
     </div>

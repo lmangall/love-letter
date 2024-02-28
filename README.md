@@ -2,6 +2,11 @@ To modify your useTranslateText hook to include the original text in bold follow
 
 Here's an approach using HTML strings to store each translation, allowing you to use <strong> tags for bolding the original text. Note, however, that injecting HTML directly into the DOM can be risky if the content includes user input, due to potential cross-site scripting (XSS) vulnerabilities. Always ensure that any dynamic content is properly sanitized.
 
+To ensure that the text copied to the clipboard or sent by email is plain text and not HTML, you need to modify the handling of your translations. Since your translations might be stored or processed as HTML strings for rendering purposes (especially if you're using dangerouslySetInnerHTML to insert translations with formatting), you'll want to strip any HTML tags when copying to the clipboard or preparing the email body.
+
+Step 1: Convert HTML to Plain Text for Clipboard
+For the handleCopyNotes function, ensure you're joining and copying the plain text versions of your translations. If your translations are stored as plain text, this is straightforward. If they're stored as HTML, you'll need a utility function to strip HTML tags:
+
 TO DO:
 
 - change the output form => blurred space that adapt to text length
