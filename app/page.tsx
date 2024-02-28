@@ -45,95 +45,102 @@ export default function Home() {
         objectFit="cover"
         alt="Background Image"
       />
-      <div className="p-6 backdrop-blur-sm bg-white-300/30 fixed top-[10%] left-1/2 transform -translate-x-1/2 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh] overflow-hidden">
-        <div className="relative flex flex-col justify-center items-center bg-gradient-radial h-full">
-          <div className="flex flex-col justify-center items-center bg-gradient-radial overflow-y-auto w-full h-full">
-            <div className="project-description-container mt-10">
-              <h1 className="text-3xl text-white font-bold mb-4">
-                Aime-moi chez moi
-              </h1>
-              <p className="w-[500px]">
-                Enter the name of your city to learn french while living your
-                own love story.
-              </p>
-
+      <div className="grid grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
+        <div className="flex p-6 backdrop-blur-sm bg-white-300/30 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
+          <div className=" flex flex-col items-center overflow-hidden h-full">
+            <div className="flex flex-col items-center bg-gradient-radial ">
+              <div className="flex flex-col items-center">
+                <h1 className="text-3xl text-white font-bold mb-4">
+                  Aime-moi chez moi
+                </h1>
+                <p className="mb-8 bold">
+                  Enter the name of your city to learn french while living your
+                  own love story.
+                </p>
+                {/* Settings Modal */}
+                <SettingsModal
+                  isOpen={isModalOpen}
+                  onClose={handleCloseModal}
+                  userGender={userGender}
+                  setUserGender={setUserGender}
+                  userOrientation={userOrientation}
+                  setUserOrientation={setUserOrientation}
+                  userTaste={userTaste}
+                  setUserTaste={setUserTaste}
+                />
+              </div>
+              <div className="flex flex-row space-x-4">
+                <InputField
+                  placeholder="Enter your city."
+                  value={userCity}
+                  onChange={(e) => setUserCity(e.target.value)}
+                />
+                <InputField
+                  placeholder="Enter your name."
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+              </div>
               <button
                 onClick={handleOpenModal}
-                className="fixed bottom-4 right-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
+                className=" m-1 mb-4 w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700  mt-4"
               >
                 Preferences
               </button>
-              {/* <button
-                onClick={() => translateText("Your text to translate", "FR")}
+              <div
+                className="flex bg-white w-full min-h-[100px] max-h-[40vh] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-hidden"
+                aria-readonly="true"
+                onMouseUp={handleTextSelection} // This ensures text selection triggers the translation
               >
-                Translate
-              </button>
-              <p>{translatedText || "Translated text will appear here"}</p> */}
+                {loveStory || "Somebody is coming to fall in love with you..."}
+              </div>
+              <Button
+                onClick={() =>
+                  fetchLoveStory(
+                    userCity,
+                    userName,
+                    userGender,
+                    userOrientation,
+                    userTaste
+                  )
+                }
+              >
+                Generate (OpenAI)
+              </Button>
+              {error && <p className="text-red-500">{error}</p>}
+            </div>
+            <p>{translatedText || "Translated text will appear here"}</p>{" "}
+            <div className="justify-center mb-8 mt-8">
+              <a
+                href="https://frenchezleo.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/logo.png"
+                  alt="Frenchez Leo Logo"
+                  width={50}
+                  height={25}
+                  priority
+                />
+              </a>
+            </div>
+            {/* Display translated text here */}
+          </div>
+        </div>
+        {/* New column with two rows */}
+        {/* <div className="flex p-6 fixed top-[10%] right-1/2 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh] overflow-hidden space-x-4"> */}
+        <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
+          {/* Cell 1 */}
+          <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1">
+            <p>{translatedText || "Translated text will appear here"}</p>
 
-              {/* Settings Modal */}
-              <SettingsModal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                userGender={userGender}
-                setUserGender={setUserGender}
-                userOrientation={userOrientation}
-                setUserOrientation={setUserOrientation}
-                userTaste={userTaste}
-                setUserTaste={setUserTaste}
-              />
-            </div>
-            <div className="flex flex-row space-x-4">
-              <InputField
-                placeholder="Enter your city."
-                value={userCity}
-                onChange={(e) => setUserCity(e.target.value)}
-              />
-              <InputField
-                placeholder="Enter your name."
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </div>
-            <div
-              className="bg-white bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 w-[500px] p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-y-auto"
-              style={{ maxHeight: "50vh" }}
-              aria-readonly="true"
-              onMouseUp={handleTextSelection} // This ensures text selection triggers the translation
-            >
-              {loveStory || "Somebody is coming to fall in love with you..."}
-            </div>
-            <Button
-              onClick={() =>
-                fetchLoveStory(
-                  userCity,
-                  userName,
-                  userGender,
-                  userOrientation,
-                  userTaste
-                )
-              }
-            >
-              Generate (OpenAI)
-            </Button>
-            {error && <p className="text-red-500">{error}</p>}
+            {/* Content of the first cell */}
           </div>
-          <div className="justify-center mb-8 mt-8">
-            <a
-              href="https://frenchezleo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/logo.png"
-                alt="Frenchez Leo Logo"
-                width={50}
-                height={25}
-                priority
-              />
-            </a>
+          {/* Cell 2 */}
+          <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1">
+            {/* Content of the second cell */}
           </div>
-          <p>{translatedText || "Translated text will appear here"}</p>{" "}
-          {/* Display translated text here */}
         </div>
       </div>
     </div>

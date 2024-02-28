@@ -18,7 +18,6 @@
 } 
  */
 
- 
 
 .gradient-blue-sky {
   background-image: var(--gradient-stops-blue-sky);
@@ -28,11 +27,6 @@
   .text-balance {
     text-wrap: balance;
   }
-}
-
-.project-description-container {
-  max-width: 600px;
-  margin-bottom: 60px;
 }
 
 .enhancement-list li {

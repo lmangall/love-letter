@@ -8,7 +8,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ onClick, children }) => (
   <button
     onClick={onClick}
-    className="bg-pink-500 bg-opacity-70 hover:bg-pink-500 w-[500px] px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
+    className="flex bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 w-full text-white font-bold rounded hover:bg-pink-700 transition duration-150 m-4"
   >
     {children}
   </button>
