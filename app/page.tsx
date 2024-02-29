@@ -82,98 +82,74 @@ export default function Home() {
         objectFit="cover"
         alt="Background Image"
       />
-      <div className="grid grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
-        <div className="flex p-6 backdrop-blur-sm bg-white-300/30 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          <div className=" flex flex-col items-center overflow-hidden h-full">
-            <div className="flex flex-col items-center bg-gradient-radial ">
-              <div className="flex flex-col items-center">
-                <h1 className="text-3xl text-white font-bold mb-4">
-                  Gimme love
-                </h1>
-                <p className="mb-8 bold">
-                  Through the power of AI, we can generate a love story for you.
-                  Just fill in the details and click the button. You can
-                  highlight groups of words you don&apos;t understand and
-                  we&&apos;ll translate them for you, right on the right.
-                </p>
-                {/* Settings Modal */}
-                <SettingsModal
-                  isOpen={isModalOpen}
-                  onClose={handleCloseModal}
-                  userGender={userGender}
-                  setUserGender={setUserGender}
-                  userOrientation={userOrientation}
-                  setUserOrientation={setUserOrientation}
-                  userTaste={userTaste}
-                  setUserTaste={setUserTaste}
-                  userTarget={userTarget}
-                  setTargetLanguage={setTargetLanguage}
-                  isQueer={isQueer}
-                  setIsQueer={setIsQueer}
-                  isHot={isHot}
-                  setIsHot={setIsHot}
-                />
-              </div>
-              <div className="flex flex-row space-x-4">
-                <InputField
-                  placeholder="Enter your city."
-                  value={userCity}
-                  onChange={(e) => setUserCity(e.target.value)}
-                />
-                <InputField
-                  placeholder="Enter your name."
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-              </div>
-              <button
-                onClick={handleOpenModal}
-                className=" m-1 mb-4 w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-600  mt-4"
-              >
-                Preferences
-              </button>
-              <div
-                className="flex bg-white w-full min-h-[200px] max-h-[30vh] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-y-auto"
-                aria-readonly="true"
-                onMouseUp={handleTextSelection} // This ensures text selection triggers the translation
-              >
-                {loveStory || "Somebody is on his way..."}
-              </div>
-              <Button
-                onClick={() =>
-                  fetchLoveStory(
-                    userCity,
-                    userName,
-                    userGender,
-                    userOrientation,
-                    userTaste,
-                    userTarget,
-                    isQueer,
-                    isHot
-                  )
-                }
-              >
-                Generate (be patient)
-              </Button>
-              {error && <p className="text-red-500">{error}</p>}
-            </div>
-            <div className="justify-center mb-8 mt-8">
-              <a
-                href="https://frenchezleo.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/logo.png"
-                  alt="Frenchez Leo Logo"
-                  width={50}
-                  height={25}
-                  priority
-                />
-              </a>
-            </div>
-            {/* Display translated text here */}
+      <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
+        <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
+          <h1 className="text-3xl text-white font-bold mb-4">Gimme love</h1>
+          <p className="mb-8 bold">Get some luv, learn some words</p>
+          {/* Settings Modal */}
+          <SettingsModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            userGender={userGender}
+            setUserGender={setUserGender}
+            userOrientation={userOrientation}
+            setUserOrientation={setUserOrientation}
+            userTaste={userTaste}
+            setUserTaste={setUserTaste}
+            userTarget={userTarget}
+            setTargetLanguage={setTargetLanguage}
+            isQueer={isQueer}
+            setIsQueer={setIsQueer}
+            isHot={isHot}
+            setIsHot={setIsHot}
+          />
+          <div className="flex flex-row space-x-4">
+            <InputField
+              placeholder="Enter your city."
+              value={userCity}
+              onChange={(e) => setUserCity(e.target.value)}
+            />
+            <InputField
+              placeholder="Enter your name."
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
           </div>
+          <button
+            onClick={handleOpenModal}
+            className="mb-4 h-10 w-full bg-gray-50 bg-opacity-30  text-slate-400 border border-1  rounded hover:bg-pink-600 mt-4"
+          >
+            Preferences
+          </button>
+          <div
+            className="bg-white w-full h-full max-h-80 bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto"
+            aria-readonly="true"
+            onMouseUp={handleTextSelection}
+          >
+            {loveStory || "Somebody is on his way..."}
+          </div>
+
+          {/* Display translated text here */}
+
+          <button
+            onClick={() =>
+              fetchLoveStory(
+                userCity,
+                userName,
+                userGender,
+                userOrientation,
+                userTaste,
+                userTarget,
+                isQueer,
+                isHot
+              )
+            }
+            className=" w-full mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+          >
+            Generate
+          </button>
+
+          {error && <p className="text-red-500">{error}</p>}
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
@@ -193,17 +169,40 @@ export default function Home() {
           </div>
           <button
             onClick={handleCopyNotes}
-            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500  py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
           >
             Copy translations
           </button>
           <button
             onClick={handleEmailTranslations}
-            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
           >
             Email translations
           </button>
         </div>
+      </div>
+      <div
+        className="logo-container"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          zIndex: 1000,
+        }}
+      >
+        <a
+          href="https://frenchezleo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/logo.png"
+            alt="Frenchez Leo Logo"
+            width={50}
+            height={25}
+            priority
+          />
+        </a>
       </div>
     </div>
   );
