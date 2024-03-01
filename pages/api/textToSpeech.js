@@ -12,6 +12,9 @@ export default async function handler(req, res) {
         input: text,
       });
 
+      //female : nova
+      //male : onyx
+
       const buffer = Buffer.from(await mp3.arrayBuffer());
       // Instead of saving the file, directly send the audio buffer as a response
       res.setHeader("Content-Type", "audio/mpeg");

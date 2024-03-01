@@ -114,7 +114,7 @@ export default function Home() {
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
           <h1 className="text-3xl text-white font-bold mb-4">Gimme love </h1>
           <p className="mb-8 bold">Get some lov, learn some words.</p>
-          <p className="mb-8 bold text-red">After API</p>
+          <p className="text-red mb-8 bold">After API</p>
           {/* Settings Modal */}
           <SettingsModal
             isOpen={isModalOpen}
@@ -173,12 +173,11 @@ export default function Home() {
                 isHot
               )
             }
-            className=" w-full mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+            className=" w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
           >
+            {error && <p className="text-red-500">{error}</p>}
             Generate
           </button>
-
-          {error && <p className="text-red-500">{error}</p>}
           <button
             onClick={() => readText(loveStory)}
             className="w-full mb-4 bg-blue-500 bg-opacity-70 hover:bg-blue-500 py-2 text-white font-bold rounded hover:bg-blue-600 mt-4"
