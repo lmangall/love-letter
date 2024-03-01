@@ -1,8 +1,30 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Add useEffect here
 import SelectField from './SelectField';
 
-const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrientation, setUserOrientation, userTaste, setUserTaste, userTarget, setTargetLanguage, isQueer, setIsQueer, isHot, setIsHot}) => {
+// We no longer use `export default` here
+
+function SettingsModal({
+  isOpen,
+  onClose,
+  userGender,
+  setUserGender,
+  userOrientation,
+  setUserOrientation,
+  userTaste,
+  setUserTaste,
+  userTarget,
+  setTargetLanguage,
+  isQueer,
+  setIsQueer,
+  isHot,
+  setIsHot,
+}) {
+  // Add the `contains` method within the component:
+  const contains = (target) => {
+    const modalNode = document.getElementById("settings-modal"); // Assuming this is the modal's ID
+    return modalNode && modalNode.contains(target);
+  }
+
   if (!isOpen) return null;
 
   return (
@@ -77,7 +99,7 @@ const SettingsModal = ({ isOpen, onClose, userGender, setUserGender, userOrienta
     type="text"
             placeholder="Enter stuff you like..."
             value={userTaste}
-            onChange={(e) => setUserTaste(e.target.value)}
+            onChange={(e) => setUserTaste}
           />
         </div>
         {/* Close Button */}
