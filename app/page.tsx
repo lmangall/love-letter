@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
@@ -20,10 +20,7 @@ export default function Home() {
   const [isQueer, setIsQueer] = useState(false);
   const [isHot, setIsHot] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // New state to manage loading status
-  const storyPrompt: string = `Through the power of AI, we can generate a love story for you.
-  Just fill in the details and click the button. You can
-  highlight groups of words you don't understand and we'll
-  translate them for you, right on the right.`;
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -102,6 +99,24 @@ export default function Home() {
     }
   };
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const togglePlayPause = () => {
+    if (audioRef.current) {
+      console.log("Before Pause:", audioRef.current.paused); // Log paused state before pause
+
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.src = loveStory; //  source
+        audioRef.current.play();
+      }
+
+      console.log("After Pause:", audioRef.current.paused); // Log paused state after pause
+
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <div className="background-image-container">
       <Image
@@ -157,9 +172,6 @@ export default function Home() {
           >
             {loveStory || "Somebody is on his way..."}
           </div>
-
-          {/* Display translated text here */}
-
           <button
             onClick={() =>
               fetchLoveStory(
@@ -175,7 +187,6 @@ export default function Home() {
             }
             className=" w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
           >
-            {error && <p className="text-red-500">{error}</p>}
             Generate
           </button>
           <button
@@ -184,6 +195,9 @@ export default function Home() {
           >
             Read Text
           </button>
+          <audio id="audioPlayer" src="" hidden></audio>{" "}
+          {/* Hidden until a source is set */}
+          <button onClick={togglePlayPause}>Play/Pause</button>
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
@@ -238,6 +252,7 @@ export default function Home() {
           />
         </a>
       </div>
+      {error && <p className="text-red-500">{error}</p>}
     </div>
   );
 }
