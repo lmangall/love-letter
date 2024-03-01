@@ -85,7 +85,7 @@ export default function Home() {
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
           <h1 className="text-3xl text-white font-bold mb-4">Gimme love</h1>
-          <p className="mb-8 bold">Get some luv, learn some words.</p>
+          <p className="mb-8 bold">Get some lov, learn some words.</p>
           {/* Settings Modal */}
           <SettingsModal
             isOpen={isModalOpen}
