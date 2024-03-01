@@ -74,6 +74,34 @@ export default function Home() {
     }
   };
 
+  const readText = async (text: string) => {
+    setIsLoading(true); // Assuming you have an isLoading state to indicate loading
+    try {
+      const response = await fetch("/api/textToSpeech", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      });
+
+      if (!response.ok) throw new Error("Failed to convert text to speech");
+
+      const arrayBuffer = await response.arrayBuffer();
+      const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
+      const url = URL.createObjectURL(blob);
+
+      // Play the audio
+      const audio = new Audio(url);
+      audio.play();
+    } catch (error) {
+      console.error("Error reading text:", error);
+      // Handle error
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="background-image-container">
       <Image
@@ -84,8 +112,9 @@ export default function Home() {
       />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          <h1 className="text-3xl text-white font-bold mb-4">Gimme love</h1>
+          <h1 className="text-3xl text-white font-bold mb-4">Gimme love </h1>
           <p className="mb-8 bold">Get some lov, learn some words.</p>
+          <p className="mb-8 bold text-red">After API</p>
           {/* Settings Modal */}
           <SettingsModal
             isOpen={isModalOpen}
@@ -150,6 +179,12 @@ export default function Home() {
           </button>
 
           {error && <p className="text-red-500">{error}</p>}
+          <button
+            onClick={() => readText(loveStory)}
+            className="w-full mb-4 bg-blue-500 bg-opacity-70 hover:bg-blue-500 py-2 text-white font-bold rounded hover:bg-blue-600 mt-4"
+          >
+            Read Text
+          </button>
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
