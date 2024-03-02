@@ -3,14 +3,13 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import InputField from "../components/InputField";
-import Button from "../components/Button";
 import useFetchLoveStory from "../hooks/useFetchLoveStory";
 import useTranslateText from "../hooks/useTranslateText";
 import SettingsModal from "../components/SettingsModal";
 import stripHtml from "../utils/stripHtml";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { fetchLoveStory, loveStory, error } = useFetchLoveStory();
   const [userCity, setUserCity] = useState("");
   const [userName, setUserName] = useState("");
@@ -20,14 +19,13 @@ export default function Home() {
   const [userTarget, setTargetLanguage] = useState("french");
   const [isQueer, setIsQueer] = useState(false);
   const [isHot, setIsHot] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // New state to manage loading status
+  const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -38,7 +36,7 @@ export default function Home() {
     const selection = window.getSelection();
     if (selection && selection.toString()) {
       const text = selection.toString();
-      await translateText(text); //           THIS WAS CHANGED LATELY
+      await translateText(text);
     }
   };
 
@@ -166,29 +164,32 @@ export default function Home() {
           >
             {loveStory || "Somebody is on his way..."}
           </div>
-          <button
-            onClick={() =>
-              fetchLoveStory(
-                userCity,
-                userName,
-                userGender,
-                userOrientation,
-                userTaste,
-                userTarget,
-                isQueer,
-                isHot
-              )
-            }
-            className=" w-full bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
-          >
-            Generate
-          </button>
-          <button
-            onClick={() => readText(loveStory)}
-            className="w-full mb-4 bg-blue-500 bg-opacity-70 hover:bg-blue-500 py-2 text-white font-bold rounded hover:bg-blue-600 mt-4"
-          >
-            Read Text
-          </button>
+          <div className="flex justify-between gap-2">
+            {" "}
+            <button
+              onClick={() =>
+                fetchLoveStory(
+                  userCity,
+                  userName,
+                  userGender,
+                  userOrientation,
+                  userTaste,
+                  userTarget,
+                  isQueer,
+                  isHot
+                )
+              }
+              className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
+            >
+              Generate
+            </button>
+            <button
+              onClick={() => readText(loveStory)}
+              className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
+            >
+              Read Text
+            </button>
+          </div>{" "}
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           {/* Hidden until a source is set */}
           <button onClick={togglePlayPause}>Play/Pause</button>
@@ -211,15 +212,15 @@ export default function Home() {
           </div>
           <button
             onClick={handleCopyNotes}
-            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500  py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+            className="bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
           >
-            Copy translations
+            Copy Translations
           </button>
           <button
             onClick={handleEmailTranslations}
-            className="m-1 mb-4 bg-pink-500 bg-opacity-70 hover:bg-pink-500 py-2 text-white font-bold rounded hover:bg-pink-600 mt-4"
+            className="bg-blue-500 hover:bg-blue-600 py-2 text-white font-bold rounded shadow-sm transition duration-150"
           >
-            Email translations
+            Email Translations
           </button>
         </div>
       </div>
