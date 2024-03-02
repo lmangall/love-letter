@@ -6,7 +6,8 @@ import InputField from "../components/InputField";
 import Button from "../components/Button";
 import useFetchLoveStory from "../hooks/useFetchLoveStory";
 import useTranslateText from "../hooks/useTranslateText";
-import SettingsModal from "../components/SettingsModal"; // Import the modal component
+import SettingsModal from "../components/SettingsModal";
+import stripHtml from "../utils/stripHtml";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
@@ -29,13 +30,6 @@ export default function Home() {
   // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
-  };
-
-  const stripHtml: (html: string) => string = (html) => {
-    // A simple way to remove HTML tags from a string
-    const tmp = document.createElement("DIV");
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
   };
 
   const { translateText, translations, translationError } = useTranslateText();

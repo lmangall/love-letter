@@ -8,6 +8,8 @@ TO DO:
 - explanation on the right
 - modal with diamond emojis
 
+Single Responsibility Principle.
+
 To modify your useTranslateText hook to include the original text in bold followed by a colon and then the translation, you need to adjust how you're handling and storing translations. Since you want to keep a visual distinction between the original text and its translation, you'll likely need to store translations as objects or HTML strings that can retain formatting information.
 
 Here's an approach using HTML strings to store each translation, allowing you to use <strong> tags for bolding the original text. Note, however, that injecting HTML directly into the DOM can be risky if the content includes user input, due to potential cross-site scripting (XSS) vulnerabilities. Always ensure that any dynamic content is properly sanitized.
@@ -45,34 +47,39 @@ https://floating-ui.com/docs/useFloating
 ```bash
 
 tree -I 'node_modules' -L 2
-.
+
 ├── README.md
 ├── app
-│ ├── globals.css
-│ ├── layout.tsx
-│ └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
 ├── background.jpg
 ├── components
-│ ├── Button.tsx
-│ └── InputField.tsx
+│   ├── Button.tsx
+│   ├── InputField.tsx
+│   ├── SelectField.tsx
+│   └── SettingsModal.jsx
 ├── favicon.ico
 ├── hooks
-│ └── useFetchLoveStory.ts
+│   ├── useFetchLoveStory.ts
+│   └── useTranslateText.ts
 ├── next-env.d.ts
 ├── next.config.mjs
 ├── package-lock.json
 ├── package.json
 ├── pages
-│ └── api
+│   └── api
 ├── postcss.config.js
 ├── public
-│ ├── Hypercolor Gradient.jpeg
-│ ├── background.jpg
-│ ├── background_2.png
-│ ├── background_3.png
-│ ├── background_4.png
-│ └── logo.png
+│   ├── Hypercolor Gradient.jpeg
+│   ├── background.jpg
+│   ├── background_2.png
+│   ├── background_3.png
+│   ├── background_4.png
+│   └── logo.png
 ├── stickers literks-05.png
 ├── tailwind.config.ts
 └── tsconfig.json
+
+7 directories, 26 files
 ```
