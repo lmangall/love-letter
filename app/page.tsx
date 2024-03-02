@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import InputField from "../components/InputField";
 import useFetchLoveStory from "../hooks/useFetchLoveStory";
@@ -112,6 +113,9 @@ export default function Home() {
 
   return (
     <div className="background-image-container">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Image
         src="/background_4.png"
         layout="fill"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 // Initializing the Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       {/* Body of the web page with Inter font applied */}
       <body className={inter.className}>{children}</body>
+      <link rel="icon" href="/favicon.ico" />
     </html>
   );
 }
