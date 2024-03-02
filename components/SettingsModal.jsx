@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'; // Add useEffect here
+import React, { useState, useEffect, useRef } from 'react'; // Add useRef here
 import SelectField from './SelectField';
 
-// We no longer use `export default` here
 
 function SettingsModal({
   isOpen,
@@ -19,17 +18,51 @@ function SettingsModal({
   isHot,
   setIsHot,
 }) {
+
   // Add the `contains` method within the component:
+  //call this function in a click event listener to see if the clicked element (target) is outside the modal (!contains(target))
   const contains = (target) => {
-    const modalNode = document.getElementById("settings-modal"); // Assuming this is the modal's ID
+    const modalNode = document.getElementById("settings-modal");
     return modalNode && modalNode.contains(target);
   }
+
+  // Create a ref for the modal container
+  const modalRef = useRef(null);
+  //useRef hook allows to create a mutable reference object that persists throughout the component's lifecycle
+  //Unlike state (useState), the value stored in useRef doesn't trigger a re-render when updated.
+
+  // Handle click outside the modal to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      //Checks if the modal is currently open && if the clicked element (event.target) is not inside the modal container.
+      if (isOpen && !modalRef.current?.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    // Add event listener on mount, remove on unmount
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isOpen, onClose, modalRef]); // Update effect when isOpen, onClose, or modalRef change
+
+  // Handle escape key press to close
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (isOpen && event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    // Add event listener on mount, remove on unmount
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]); // Update effect when isOpen or onClose change  
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-white bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
-      <div className="p-6 bg-pink-300 bg-opacity-80 fixed top-[10%] left-1/2 transform -translate-x-1/2 rounded-lg border border-1 overflow-hidden">
+      <div ref={modalRef} className="p-6 bg-pink-300 bg-opacity-80 fixed top-[10%] left-1/2 transform -translate-x-1/2 rounded-lg border border-1 overflow-hidden">
         <h2 className="text-xl text-center font-bold mb-4">Settings</h2>
         {/* Gender Select */}
         <div className="">
@@ -78,7 +111,7 @@ function SettingsModal({
       checked={isQueer}
       onChange={(e) => setIsQueer(e.target.checked)}
     />
-    <span className="ml-2">I am queer 🏳️‍🌈 <span className="font-semibold	">#MadeInBerlin</span></span>
+    <span className="ml-2">I am queer ️‍ <span className="font-semibold ">#MadeInBerlin</span></span>
   </label>
 
           {/* Hot Checkbox */}
@@ -89,7 +122,7 @@ function SettingsModal({
       checked={isHot}
       onChange={(e) => setIsHot(e.target.checked)}
     />
-    <span className="ml-2">Make it 🔥 <span className="text-red-500 font-bold">HOT 🔥</span></span>
+    <span className="ml-2">Make it  <span className="text-red-500 font-bold">HOT </span></span>
   </label>
 
         {/* Taste Input */}
@@ -106,8 +139,8 @@ function SettingsModal({
         <div className="text-center">
           <button
             onClick={onClose}
-			className="bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
-			>
+      className="bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
+      >
             Save
           </button>
         </div>

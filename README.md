@@ -8,6 +8,8 @@ TO DO:
 - explanation on the right
 - modal with diamond emojis
 
+useEffect hook
+
 Single Responsibility Principle.
 
 To modify your useTranslateText hook to include the original text in bold followed by a colon and then the translation, you need to adjust how you're handling and storing translations. Since you want to keep a visual distinction between the original text and its translation, you'll likely need to store translations as objects or HTML strings that can retain formatting information.
