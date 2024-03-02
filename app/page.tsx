@@ -113,9 +113,6 @@ export default function Home() {
 
   return (
     <div className="background-image-container">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Image
         src="/background_4.png"
         layout="fill"
