@@ -121,18 +121,12 @@ export default function Home() {
       />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          <h1 className="text-3xl text-white font-bold">
+          <h1 className="mb-4 text-3xl text-white font-bold">
             Love letter, love language{" "}
           </h1>
-          <p className="mb-2 font-bold">
+          <p className="mb-4 font-semibold">
             An AI powered tool to get some luv while learning a foreign language
             🧠.
-          </p>
-          <p className="mb-8">
-            Fill the fields and click on the button to get your love letter 💌,
-            then,
-            <span className="rounded-lg">highlight the text</span> to check the
-            translation on the right panel 👉
           </p>
           {/* Settings Modal */}
           <SettingsModal
@@ -174,7 +168,12 @@ export default function Home() {
             aria-readonly="true"
             onMouseUp={handleTextSelection}
           >
-            {loveStory || "Somebody is on his way..."}
+            {loveStory || (
+              <span className="text-grey">
+                Fill the fields and click on the button to get your love letter
+                💌
+              </span>
+            )}
           </div>
           <div className="flex justify-between gap-2">
             <button
@@ -214,14 +213,24 @@ export default function Home() {
           {/* right column*/}
           <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1 whitespace-pre-wrap">
             <div>
-              {translations.map((translation, index) => (
-                <p
-                  key={index}
-                  dangerouslySetInnerHTML={{ __html: translation }}
-                />
-              ))}
-              {translationError && (
-                <p className="text-red-500">{translationError}</p>
+              {translations.length > 0 ? (
+                <div>
+                  {translations.map((translation, index) => (
+                    <p
+                      key={index}
+                      dangerouslySetInnerHTML={{ __html: translation }}
+                    />
+                  ))}
+                  {translationError && (
+                    <p className="text-red-500">{translationError}</p>
+                  )}
+                </div>
+              ) : (
+                <span className="display: flex text-grey align-items: center">
+                  Select or highlight text from the love letter to see its
+                  translation appear 👇 here 👇. You can learn the vocabulary or
+                  email it to yourself for futur review 🤓 📖
+                </span>
               )}
             </div>
           </div>
