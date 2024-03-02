@@ -124,7 +124,7 @@ export default function Home() {
           <h1 className="text-3xl text-white font-bold">
             Love letter, love language{" "}
           </h1>
-          <p className="mb-8 font-bold">
+          <p className="mb-2 font-bold">
             An AI powered tool to get some luv while learning a foreign language
             🧠.
           </p>

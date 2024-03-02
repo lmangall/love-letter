@@ -1,10 +1,7 @@
 TO DO:
 
 - responsive
-- escape the settings with esc and click out
-- max number of words to translate
 - Favicon
-- emoji
 - explanation on the right
 - modal with diamond emojis
 
