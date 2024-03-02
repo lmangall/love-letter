@@ -1,40 +1,39 @@
-**Frenchie Love Letters: Learn French with a Cheeky Twist**
-
 **Project Description**
 
-Frenchie Love Letters is a playful and educational web application designed to help you (yes, you!) learn French in a lighthearted and engaging way.
+A playful and educational web app designed to help you learn a language, initially thought for French, hence the love-theme 🥖 The app is inclusive of all gender identities and sexual orientations 🏳️‍🌈 and is not afraid to produce HOT content...
 
-Imagine receiving a hilariously over-the-top love letter addressed to you, crafted by the power of OpenAI's temperature cranked up to maximum cheesy-ness. This is the magic of Frenchie Love Letters!
+🥖 + 🍑 = 💌
 
-As you explore your personalized love letter, you can seamlessly highlight any word or passage that sparks your curiosity. The app instantly translates them, empowering you to understand the French behind the affectionate (and slightly exaggerated) declarations.
+You fill the fields and get a custom over-the-top love letter addressed to you, with OpenAI's temperature cranked up to the max.
 
-**Beyond the Love Letter**
+As you read the letter, you can highlight any word or passage that you don't fully understand. The app translates them through Deepl's API, so you can understand the French behind the love declarations.
 
-Frenchie Love Letters empowers you to take control of your learning journey. Once you've unraveled the mysteries of your love letter, you can:
+The app also use the TTS functionality of OpenAI's API, so you can have the text read by an AI generated voice
+
+Once you've unraveled the mysteries of your love letter, you can:
 
 - **Email the translations to yourself:** Save your newfound vocabulary for future reference and review.
 - **Copy the translations:** Easily paste them into flashcards or your preferred learning platform.
 
-This app is a labor of love, combining the creator's passions for French language teaching (bonjour!) and programming. It's envisioned as the first installment in a series of engaging web applications designed to enhance language learning, all part of a marketing campaign to promote a French teacher's online courses.
+This app is a labor of love, combining my passion for French language teaching and programming. It is the first installment in a series of web applications designed to enhance language learning, all part of a marketing campaign to promote my colleague, who is an instagrammer and a French teacher, new online course.
 
-**Getting Started (Coming Soon!)**
+**Tech Stack**
 
-Detailed instructions on how to use and get the most out of Frenchie Love Letters will be provided soon. Stay tuned!
+- **Node.js:** The JavaScript runtime environment that powers the server-side of the application.
+- **Next.js:** A popular React framework providing server-side rendering (SSR), static site generation (SSG), and data fetching functionalities for a performant and SEO-friendly experience.
+- **JavaScript:** The core programming language powering the application's logic and interactivity.
+- **React:** A powerful JavaScript library for building user interfaces, offering a component-based approach for reusable and maintainable code.
+- **Tailwind CSS:** A utility-first CSS framework, streamlining UI development with its extensive collection of pre-built styles and classes.
 
-**Project Stack**
+**A Week of Exploration, a Week of Refinement**
+This project serves as a testament to the power of rapid learning. The initial version was built within a week and a second week was dedicated to refining the application. This experience served as my introduction to this tech stack (before I only worked with C, learning the 42Berlin curriculum)
 
-- Next.js (React framework)
-- OpenAI API (for generating love letters)
-- DeepL API (for translations)
-- Tailwind CSS (for styling)
+**To Do List**
 
-**Future Improvements**
-
-- Enhanced responsiveness for optimal viewing across devices
-- Favicon to add a polished touch
-- Educational explanations displayed alongside translations
-- Settings modal to customize the love letter generation process (optional fields, humor level, etc.)
-- Pause button for audio playback (if applicable)
+- **[ ]** Enhanced responsiveness
+- **[ ]** Favicon
+- **[ ]** "About" modal
+- **[ ]** Pause button for audio playback
 
 **Understanding Key Concepts**
 
@@ -44,16 +43,8 @@ Detailed instructions on how to use and get the most out of Frenchie Love Letter
 
 - **Single Responsibility Principle:** A software design principle advocating that each module or component should have a single responsibility and a well-defined boundary.
 
-**Exploring Resources**
+**Some Resources**
 
 - DeepL API Reference: [https://www.deepl.com/en/docs-api](https://www.deepl.com/en/docs-api)
 - DeepL Node.js Library: [https://github.com/DeepLcom](https://github.com/DeepLcom)
 - Tailwind CSS Documentation: [https://tailwindcss.com/docs/installation](https://tailwindcss.com/docs/installation)
-
-**Contributing (Coming Soon!)**
-
-Information on how to contribute to the development of Frenchie Love Letters will be added in the future.
-
-**License**
-
-This project is licensed under the MIT License: [https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/mit/).
