@@ -18,6 +18,7 @@ function SettingsModal({
   isHot,
   setIsHot,
 }) {
+  
 
   // Add the `contains` method within the component:
   //call this function in a click event listener to see if the clicked element (target) is outside the modal (!contains(target))

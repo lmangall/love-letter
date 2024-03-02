@@ -41,10 +41,11 @@ export default function Home() {
   };
 
   const handleEmailTranslations = () => {
-    const emailBody = translations
-      .map(stripHtml)
-      .join("\n")
-      .replace(/#/g, "%23");
+    const emailBody =
+      translations.map(stripHtml).join("\n").replace(/#/g, "%23") +
+      "\n\n\n" +
+      "If you like the app, subscribe to the newsletter (in 'About') - there's more to come,\nlove,\nLeo ❤️"; // Your message
+
     const subject = "My Translations";
     const mailtoUrl = `mailto:?subject=${encodeURIComponent(
       subject
@@ -64,7 +65,7 @@ export default function Home() {
   };
 
   const readText = async (text: string) => {
-    setIsLoading(true); // Assuming you have an isLoading state to indicate loading
+    setIsLoading(true);
     try {
       const response = await fetch("/api/textToSpeech", {
         method: "POST",
@@ -119,9 +120,19 @@ export default function Home() {
       />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          <h1 className="text-3xl text-white font-bold mb-4">Gimme love </h1>
-          <p className="mb-8 bold">Get some lov, learn some words.</p>
-          <p className="text-red mb-8 bold">After API</p>
+          <h1 className="text-3xl text-white font-bold">
+            Love letter, love language{" "}
+          </h1>
+          <p className="mb-8 font-bold">
+            An AI powered tool to get some luv while learning a foreign language
+            🧠.
+          </p>
+          <p className="mb-8">
+            Fill the fields and click on the button to get your love letter 💌,
+            then,
+            <span className="rounded-lg">highlight the text</span> to check the
+            translation on the right panel 👉
+          </p>
           {/* Settings Modal */}
           <SettingsModal
             isOpen={isModalOpen}
@@ -165,9 +176,9 @@ export default function Home() {
             {loveStory || "Somebody is on his way..."}
           </div>
           <div className="flex justify-between gap-2">
-            {" "}
             <button
-              onClick={() =>
+              onClick={() => {
+                setIsLoading(true); // Trigger loading state
                 fetchLoveStory(
                   userCity,
                   userName,
@@ -177,11 +188,14 @@ export default function Home() {
                   userTarget,
                   isQueer,
                   isHot
-                )
-              }
-              className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
+                ).finally(() => setIsLoading(false)); // Reset loading state
+              }}
+              className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150 flex justify-center items-center"
             >
-              Generate
+              {isLoading && (
+                <div className="spinner"></div> // Spinner appears next to the text
+              )}
+              Generate {/* Text remains visible */}
             </button>
             <button
               onClick={() => readText(loveStory)}
@@ -189,7 +203,7 @@ export default function Home() {
             >
               Read Text
             </button>
-          </div>{" "}
+          </div>
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           {/* Hidden until a source is set */}
           <button onClick={togglePlayPause}>Play/Pause</button>

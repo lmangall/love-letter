@@ -20,3 +20,23 @@
   margin-left: 20px;
 }
 
+/* Adjusted spinner CSS */
+.spinner {
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Make the spinner thinner */
+  width: 20px; /* Smaller width */
+  height: 20px; /* Smaller height */
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  display: inline-block; /* Added for inline display */
+  vertical-align: middle; /* Align to the middle vertically */
+  margin-right: 8px; /* Adjust spacing between spinner and text */
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

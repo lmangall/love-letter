@@ -1,5 +1,21 @@
+/**
+ * @brief Generates a love letter based on user input.
+ * @details This function is an asynchronous handler for the `/generate` endpoint.
+ *          It takes user information from the request body and constructs a prompt
+ *          for OpenAI. The prompt includes details about the user's city, name,
+ *          preferences, and desired language. The function then calls the OpenAI
+ *          API with the prompt and returns the generated love letter in the response.
+ *
+ * @param req The HTTP request object.
+ * @param res The HTTP response object.
+ *
+ * @return A Promise that resolves to a JSON object with either a `result`
+ *         property containing the generated love letter or an `error` property
+ *         indicating an issue.
+ *
+ * @throws An error if the OpenAI API call fails or an internal error occurs.
+ */
 export default async function handleGenerateClick(req, res) {
-  // Extract both the city and name from the request body
   const {
     userCity,
     userName,
@@ -12,7 +28,7 @@ export default async function handleGenerateClick(req, res) {
   } = req.body;
 
   // Update the prompt to include specific details about the city and the user's name
-  let loveRequest = `Write a story (around 50 words) strictly in ${userTarget} language: a young ${userOrientation} (write at first person) arrives in ${userCity} and falls in love with ${userName} (a "${userGender}" who likes "${userTaste}"). personalize the story with really specific details about "${userCity}" (known places, local events...).`;
+  let loveRequest = `Write a love letter (around 100 words) in ${userTarget}: a young ${userOrientation} (write at first person, invent a name) write to ${userName} (a ${userGender} who likes ${userTaste}) personalize the story with really specific details about "${userCity}" (known places, local events...).`;
 
   if (isQueer) {
     loveRequest += ` Include queer elements in the story.`;
@@ -21,9 +37,8 @@ export default async function handleGenerateClick(req, res) {
     loveRequest += ` and Make it hot.`;
   }
 
-  console.log("Sending prompt to OpenAI:", loveRequest); // Log the prompt being sent to OpenAI
+  console.log("Prompt sent to OpenAI:", loveRequest);
 
-  // Create the initial message for OpenAI
   const messages = [{ role: "user", content: loveRequest }];
 
   try {
@@ -32,10 +47,10 @@ export default async function handleGenerateClick(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // Use environment variable for security
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo", // Adjust model as necessary
+        model: "gpt-3.5-turbo",
         messages: messages,
         temperature: 0.9,
       }),
