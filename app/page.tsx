@@ -7,7 +7,6 @@ import useFetchLoveStory from "../hooks/useFetchLoveStory";
 import useTranslateText from "../hooks/useTranslateText";
 import SettingsModal from "../components/SettingsModal";
 import stripHtml from "../utils/stripHtml";
-import SelectField from "./SelectField";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
