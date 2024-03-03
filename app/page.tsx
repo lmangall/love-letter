@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import InputField from "../components/InputField";
 import useFetchLoveStory from "../hooks/useFetchLoveStory";
@@ -67,7 +66,6 @@ export default function Home() {
   };
 
   const readText = async (text: string) => {
-    setIsLoadingRead(true);
     try {
       const response = await fetch("/api/textToSpeech", {
         method: "POST",
@@ -89,27 +87,41 @@ export default function Home() {
     } catch (error) {
       console.error("Error reading text:", error);
       // Handle error
-    } finally {
-      setIsLoadingRead(false);
     }
   };
 
   const audioRef = useRef<HTMLAudioElement>(null);
-  const togglePlayPause = () => {
+  const togglePlayPause = async () => {
     if (audioRef.current) {
-      console.log("Before Pause:", audioRef.current.paused); // Log paused state before pause
+      if (audioRef.current.paused) {
+        if (!audioRef.current.src) {
+          try {
+            const response = await fetch("/api/textToSpeech", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ text: loveStory }),
+            });
 
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.src = loveStory; //  source
+            if (!response.ok)
+              throw new Error("Failed to convert text to speech");
+
+            const audioBlob = await response.blob();
+            const audioUrl = URL.createObjectURL(audioBlob);
+            audioRef.current.src = audioUrl;
+          } catch (error) {
+            console.error("Error fetching audio:", error);
+            // Handle error (e.g., display an error message to the user)
+            return;
+          }
+        }
         audioRef.current.play();
+      } else {
+        audioRef.current.pause();
       }
-
-      console.log("After Pause:", audioRef.current.paused); // Log paused state after pause
-
-      setIsPlaying(!isPlaying);
     }
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -202,15 +214,15 @@ export default function Home() {
               onClick={() => readText(loveStory)}
               className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
             >
-              {isLoadingRead && (
+              {/* {isLoadingRead && (
                 <div className="spinner"></div> // Spinner appears next to the text
-              )}
+              )} */}
               Read Text
             </button>
           </div>
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           {/* Hidden until a source is set */}
-          <button onClick={togglePlayPause}>Pause button is WIP</button>
+          <button onClick={togglePlayPause}>Pause button WIP</button>
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
@@ -233,7 +245,7 @@ export default function Home() {
                 <span className="display: flex text-grey align-items: center">
                   Select or highlight text from the love letter to see its
                   translation appear 👇 here 👇. You can learn the vocabulary or
-                  email it to yourself for future review 🤓
+                  email it to yourself for future review 🚀
                 </span>
               )}
             </div>
