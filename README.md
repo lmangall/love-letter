@@ -1,11 +1,21 @@
+-
+-
+
+# FIX TTS
+
+-
+-
+-
+
 # Project Description\*\*
 
-A playful and educational web app designed to help you learn a language, initially thought for French, hence the love-theme 🥖 The app is inclusive of all gender identities and sexual orientations 🏳️‍🌈 and is not afraid to produce HOT content...
+[demo link](https://loveletter-seven.vercel.app/)
 
-🥖 + 🍑 = 💌
+A web app designed to help you learn a language, initially thought for French, hence the love-theme 🥖 The app is inclusive of all gender identities and sexual orientations 🏳️‍🌈 and is not afraid to produce HOT content...
 
-You fill the fields and get a custom over-the-top love letter addressed to you, with OpenAI's temperature cranked up to the max.
+    									🥖 + 🍑 = 💌
 
+=> You fill the fields and get a custom over-the-top love letter addressed to you, with OpenAI's temperature cranked up to the max.
 As you read the letter, you can highlight any word or passage that you don't fully understand. The app translates them through Deepl's API, so you can understand the French behind the love declarations.
 
 The app also use the TTS functionality of OpenAI's API, so you can have the text read by an AI generated voice
@@ -107,3 +117,37 @@ content
   Content
 
 </details>
+
+```bash
+tree -I 'node_modules' -L 2
+.
+├── README.md
+├── app
+│ ├── globals.css
+│ ├── layout.tsx
+│ └── page.tsx
+├── background.jpg
+├── components
+│ ├── Button.tsx
+│ └── InputField.tsx
+├── favicon.ico
+├── hooks
+│ └── useFetchLoveStory.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── pages
+│ └── api
+├── postcss.config.js
+├── public
+│ ├── Hypercolor Gradient.jpeg
+│ ├── background.jpg
+│ ├── background_2.png
+│ ├── background_3.png
+│ ├── background_4.png
+│ └── logo.png
+├── stickers literks-05.png
+├── tailwind.config.ts
+└── tsconfig.json
+```

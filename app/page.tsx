@@ -8,7 +8,6 @@ import useFetchLoveStory from "../hooks/useFetchLoveStory";
 import useTranslateText from "../hooks/useTranslateText";
 import SettingsModal from "../components/SettingsModal";
 import stripHtml from "../utils/stripHtml";
-import Link from "next/link";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +21,7 @@ export default function Home() {
   const [isQueer, setIsQueer] = useState(false);
   const [isHot, setIsHot] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingRead, setIsLoadingRead] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOpenModal = () => {
@@ -67,7 +67,7 @@ export default function Home() {
   };
 
   const readText = async (text: string) => {
-    setIsLoading(true);
+    setIsLoadingRead(true);
     try {
       const response = await fetch("/api/textToSpeech", {
         method: "POST",
@@ -90,7 +90,7 @@ export default function Home() {
       console.error("Error reading text:", error);
       // Handle error
     } finally {
-      setIsLoading(false);
+      setIsLoadingRead(false);
     }
   };
 
@@ -202,12 +202,15 @@ export default function Home() {
               onClick={() => readText(loveStory)}
               className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
             >
+              {isLoadingRead && (
+                <div className="spinner"></div> // Spinner appears next to the text
+              )}
               Read Text
             </button>
           </div>
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           {/* Hidden until a source is set */}
-          <button onClick={togglePlayPause}>Play/Pause</button>
+          <button onClick={togglePlayPause}>Pause button is WIP</button>
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
@@ -230,7 +233,7 @@ export default function Home() {
                 <span className="display: flex text-grey align-items: center">
                   Select or highlight text from the love letter to see its
                   translation appear 👇 here 👇. You can learn the vocabulary or
-                  email it to yourself for futur review 🤓 📖
+                  email it to yourself for future review 🤓
                 </span>
               )}
             </div>
