@@ -1,4 +1,4 @@
-**Project Description**
+# Project Description\*\*
 
 A playful and educational web app designed to help you learn a language, initially thought for French, hence the love-theme 🥖 The app is inclusive of all gender identities and sexual orientations 🏳️‍🌈 and is not afraid to produce HOT content...
 
@@ -15,15 +15,16 @@ Once you've unraveled the mysteries of your love letter, you can:
 - **Email the translations to yourself:** Save your newfound vocabulary for future reference and review.
 - **Copy the translations:** Easily paste them into flashcards or your preferred learning platform.
 
-This app is a labor of love, combining my passion for French language teaching and programming. It is the first installment in a series of web applications designed to enhance language learning, all part of a marketing campaign to promote my colleague, who is an instagrammer and a French teacher, new online course.
+This app is a labor of love, combining my passion for French language teaching and programming. It is the first installment in a series of web applications designed to enhance language learning, part of a marketing campaign to promote my colleague (instagrammer and a French teacher) new online course.
 
-**Tech Stack**
+## Tech Stack
 
 - **Node.js:** The JavaScript runtime environment that powers the server-side of the application.
 - **Next.js:** A popular React framework providing server-side rendering (SSR), static site generation (SSG), and data fetching functionalities for a performant and SEO-friendly experience.
 - **JavaScript:** The core programming language powering the application's logic and interactivity.
 - **React:** A powerful JavaScript library for building user interfaces, offering a component-based approach for reusable and maintainable code.
 - **Tailwind CSS:** A utility-first CSS framework, streamlining UI development with its extensive collection of pre-built styles and classes.
+  => deployed on Vercel
 
 **A Week of Exploration, a Week of Refinement**
 This project serves as a testament to the power of rapid learning. The initial version was built within a week and a second week was dedicated to refining the application. This experience served as my introduction to this tech stack (before I only worked with C, learning the 42Berlin curriculum)
@@ -48,3 +49,61 @@ This project serves as a testament to the power of rapid learning. The initial v
 - DeepL API Reference: [https://www.deepl.com/en/docs-api](https://www.deepl.com/en/docs-api)
 - DeepL Node.js Library: [https://github.com/DeepLcom](https://github.com/DeepLcom)
 - Tailwind CSS Documentation: [https://tailwindcss.com/docs/installation](https://tailwindcss.com/docs/installation)
+
+---
+
+Code for a button:
+
+        <Link
+          href="/demo"
+          className="group rounded-full px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
+          style={{
+            boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
+          }}
+        >
+          <span className="mr-2"> Button </span>
+          <svg
+            className="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.75 6.75L19.25 12L13.75 17.25"
+              stroke="#1E2B3A"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {/* <path
+              d="M19 12H4.75"
+              stroke="#1E2B3A"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            /> */}
+          </svg>
+        </Link>
+
+---
+
+## H. FAQ
+
+<details>
+  <summary>Dropdown 1</summary>
+  
+  <br/>
+
+content
+
+</details>
+
+<br/>
+
+<details>
+  <summary>Dropdown 2</summary>
+  <br/>
+  
+  Content
+
+</details>

@@ -8,6 +8,7 @@ import useFetchLoveStory from "../hooks/useFetchLoveStory";
 import useTranslateText from "../hooks/useTranslateText";
 import SettingsModal from "../components/SettingsModal";
 import stripHtml from "../utils/stripHtml";
+import Link from "next/link";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
