@@ -1,19 +1,10 @@
--
--
-
-# FIX TTS
-
--
--
--
-
-# Project Description\*\*
+# Project Description
 
 [demo link](https://loveletter-seven.vercel.app/)
 
 A web app designed to help you learn a language, initially thought for French, hence the love-theme 🥖 The app is inclusive of all gender identities and sexual orientations 🏳️‍🌈 and is not afraid to produce HOT content...
 
-    									🥖 + 🍑 = 💌
+    					🥖 + 🍑 = 💌
 
 => You fill the fields and get a custom over-the-top love letter addressed to you, with OpenAI's temperature cranked up to the max.
 As you read the letter, you can highlight any word or passage that you don't fully understand. The app translates them through Deepl's API, so you can understand the French behind the love declarations.
