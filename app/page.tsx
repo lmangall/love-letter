@@ -67,7 +67,8 @@ export default function Home() {
 
   const readText = async (text: string) => {
     try {
-      const response = await fetch("/api/textToSpeech", {
+      console.log("Reading text button pressed");
+      const response = await fetch("/api/openaiTTS", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +76,18 @@ export default function Home() {
         body: JSON.stringify({ text }),
       });
 
-      if (!response.ok) throw new Error("Failed to convert text to speech");
+      if (!response.ok) {
+        // Handle non-OK responses gracefully
+        throw new Error(
+          `Failed to convert text to speech, status: ${response.status}`
+        );
+      }
+
+      // Ensure the response is JSON before trying to parse it
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Received non-JSON response from the server");
+      }
 
       const arrayBuffer = await response.arrayBuffer();
       const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
@@ -86,43 +98,42 @@ export default function Home() {
       audio.play();
     } catch (error) {
       console.error("Error reading text:", error);
-      // Handle error
     }
   };
 
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const togglePlayPause = async () => {
-    if (audioRef.current) {
-      if (audioRef.current.paused) {
-        if (!audioRef.current.src) {
-          try {
-            const response = await fetch("/api/textToSpeech", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ text: loveStory }),
-            });
+  // const audioRef = useRef<HTMLAudioElement>(null);
+  // const togglePlayPause = async () => {
+  //   if (audioRef.current) {
+  //     if (audioRef.current.paused) {
+  //       if (!audioRef.current.src) {
+  //         try {
+  //           const response = await fetch("/api/textToSpeech", {
+  //             method: "POST",
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //             },
+  //             body: JSON.stringify({ text: loveStory }),
+  //           });
 
-            if (!response.ok)
-              throw new Error("Failed to convert text to speech");
+  //           if (!response.ok)
+  //             throw new Error("Failed to convert text to speech");
 
-            const audioBlob = await response.blob();
-            const audioUrl = URL.createObjectURL(audioBlob);
-            audioRef.current.src = audioUrl;
-          } catch (error) {
-            console.error("Error fetching audio:", error);
-            // Handle error (e.g., display an error message to the user)
-            return;
-          }
-        }
-        audioRef.current.play();
-      } else {
-        audioRef.current.pause();
-      }
-    }
-    setIsPlaying(!isPlaying);
-  };
+  //           const audioBlob = await response.blob();
+  //           const audioUrl = URL.createObjectURL(audioBlob);
+  //           audioRef.current.src = audioUrl;
+  //         } catch (error) {
+  //           console.error("Error fetching audio:", error);
+  //           // Handle error (e.g., display an error message to the user)
+  //           return;
+  //         }
+  //       }
+  //       audioRef.current.play();
+  //     } else {
+  //       audioRef.current.pause();
+  //     }
+  //   }
+  //   setIsPlaying(!isPlaying);
+  // };
 
   return (
     <div className="background-image-container">
@@ -222,7 +233,7 @@ export default function Home() {
           </div>
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           {/* Hidden until a source is set */}
-          <button onClick={togglePlayPause}>Pause button WIP</button>
+          {/* <button onClick={togglePlayPause}>Pause button WIP</button> */}
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">

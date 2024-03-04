@@ -20,8 +20,11 @@ export default async function handler(req, res) {
       res.setHeader("Content-Type", "audio/mpeg");
       res.send(buffer);
     } catch (error) {
-      console.error("Error generating speech:", error);
-      res.status(500).json({ error: "An internal error occurred." });
+      console.error("Error generating speech:", error.message);
+      // If OpenAI's API error provides more detail, consider including it in the response
+      res
+        .status(500)
+        .json({ error: error.message || "An internal error occurred." });
     }
   } else {
     // Handle any requests that aren't POST
