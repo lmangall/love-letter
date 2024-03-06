@@ -145,7 +145,7 @@ export default function Home() {
           <h1 className="mb-4 text-3xl text-white font-bold">
             Love letter, love language{" "}
           </h1>
-          <h1 className="mb-4  font-willow">willow font</h1>{" "}
+          <h1 className="mb-4  font-willow">Awillow font</h1>{" "}
           <p className="mb-4 font-semibold">
             An AI powered tool to get some luv while learning a foreign language
             🧠.

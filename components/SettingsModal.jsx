@@ -112,7 +112,7 @@ function SettingsModal({
       checked={isQueer}
       onChange={(e) => setIsQueer(e.target.checked)}
     />
-    <span className="ml-2">I am queer ️‍ <span className="font-semibold ">#MadeInBerlin</span></span>
+    <span className="ml-2">I am queer ️‍🏳️‍🌈 <span className="font-semibold ">#MadeInBerlin</span></span>
   </label>
 
           {/* Hot Checkbox */}
@@ -123,7 +123,7 @@ function SettingsModal({
       checked={isHot}
       onChange={(e) => setIsHot(e.target.checked)}
     />
-    <span className="ml-2">Make it  <span className="text-red-500 font-bold">HOT </span></span>
+    <span className="ml-2">Make it  <span className="text-red-500 font-bold">🔥HOT🔥 </span></span>
   </label>
 
         {/* Taste Input */}
