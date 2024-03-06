@@ -103,39 +103,39 @@ export default function Home() {
     }
   };
 
-  // const audioRef = useRef<HTMLAudioElement>(null);
-  // const togglePlayPause = async () => {
-  //   if (audioRef.current) {
-  //     if (audioRef.current.paused) {
-  //       if (!audioRef.current.src) {
-  //         try {
-  //           const response = await fetch("/api/textToSpeech", {
-  //             method: "POST",
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //             body: JSON.stringify({ text: loveStory }),
-  //           });
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const togglePlayPause = async () => {
+    if (audioRef.current) {
+      if (audioRef.current.paused) {
+        if (!audioRef.current.src) {
+          try {
+            const response = await fetch("/api/textToSpeech", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ text: loveStory }),
+            });
 
-  //           if (!response.ok)
-  //             throw new Error("Failed to convert text to speech");
+            if (!response.ok)
+              throw new Error("Failed to convert text to speech");
 
-  //           const audioBlob = await response.blob();
-  //           const audioUrl = URL.createObjectURL(audioBlob);
-  //           audioRef.current.src = audioUrl;
-  //         } catch (error) {
-  //           console.error("Error fetching audio:", error);
-  //           // Handle error (e.g., display an error message to the user)
-  //           return;
-  //         }
-  //       }
-  //       audioRef.current.play();
-  //     } else {
-  //       audioRef.current.pause();
-  //     }
-  //   }
-  //   setIsPlaying(!isPlaying);
-  // };
+            const audioBlob = await response.blob();
+            const audioUrl = URL.createObjectURL(audioBlob);
+            audioRef.current.src = audioUrl;
+          } catch (error) {
+            console.error("Error fetching audio:", error);
+            // Handle error (e.g., display an error message to the user)
+            return;
+          }
+        }
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <div className="background-image-container">
@@ -145,7 +145,7 @@ export default function Home() {
           <h1 className="mb-4 text-3xl text-white font-bold">
             Love letter, love language{" "}
           </h1>
-          <h1 className="mb-4  font-willow">Awillow font</h1>{" "}
+          {/* <h1 className="mb-4  font-willow">Awillow font</h1>{" "} */}
           <p className="mb-4 font-semibold">
             An AI powered tool to get some luv while learning a foreign language
             🧠.
@@ -231,7 +231,7 @@ export default function Home() {
           </div>
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           {/* Hidden until a source is set */}
-          {/* <button onClick={togglePlayPause}>Pause button WIP</button> */}
+          <button onClick={togglePlayPause}>Pause button WIP</button>
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">

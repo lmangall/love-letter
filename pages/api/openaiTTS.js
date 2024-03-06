@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import OpenAI from "openai";
 
 export default async function handler(req, res) {
@@ -8,20 +10,20 @@ export default async function handler(req, res) {
 
       const mp3 = await openai.audio.speech.create({
         model: "tts-1",
-        voice: "nova",
+        voice: "nova", // Or any desired voice
         input: text,
       });
 
-      //female : nova
-      //male : onyx
-
       const buffer = Buffer.from(await mp3.arrayBuffer());
-      // Instead of saving the file, directly send the audio buffer as a response
-      res.setHeader("Content-Type", "audio/mpeg");
-      res.send(buffer);
+
+      const speechFile = path.resolve("./speech.mp3"); // Replace with your desired path
+      console.log("Saving audio to:", speechFile);
+
+      await fs.promises.writeFile(speechFile, buffer);
+
+      // You can optionally send a success response here (e.g., res.status(200).json({ message: "Audio generated successfully" }))
     } catch (error) {
       console.error("Error generating speech:", error.message);
-      // If OpenAI's API error provides more detail, consider including it in the response
       res
         .status(500)
         .json({ error: error.message || "An internal error occurred." });
