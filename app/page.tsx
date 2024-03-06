@@ -134,9 +134,24 @@ export default function Home() {
       <LoveLetterBackground />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          <h1 className="mb-4 text-3xl text-white font-bold">
+          {/* <h1 className="mb-4 text-3xl text-white font-bold">
             Love letter, love language{" "}
-          </h1>
+          </h1> */}
+          <div className="mb-2 logo-container">
+            <a
+              href="https://frenchezleo.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/love_letter_logo.png"
+                alt="Frenchez Leo Logo"
+                width={500}
+                height={25}
+                priority
+              />
+            </a>
+          </div>
           {/* <h1 className="mb-4  font-willow">Awillow font</h1>{" "} */}
           <p className="mb-4 font-semibold">
             An AI powered tool to get some luv while learning a foreign language
