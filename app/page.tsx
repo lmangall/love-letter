@@ -193,7 +193,7 @@ export default function Home() {
             Preferences
           </button>
           <div
-            className="bg-white w-full h-full max-h-80 bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto"
+            className="bg-white w-full h-full max-h-80 bg-opacity-40 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto"
             aria-readonly="true"
             onMouseUp={handleTextSelection}
           >
@@ -244,7 +244,7 @@ export default function Home() {
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
           {/* right column*/}
           <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-            <div className="mb-4 bg-white w-full h-5/6 bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-2 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto">
+            <div className="mb-4 bg-white w-full h-5/6 bg-opacity-40 p-2 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto">
               <div>
                 {translations.length > 0 ? (
                   <div>

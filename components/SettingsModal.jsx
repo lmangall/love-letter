@@ -63,7 +63,7 @@ function SettingsModal({
 
   return (
     <div className="fixed inset-0 bg-white bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
-      <div ref={modalRef} className="p-6 bg-pink-300 bg-opacity-80 fixed top-[10%] left-1/2 transform -translate-x-1/2 rounded-lg border border-1 overflow-hidden">
+      <div ref={modalRef} className="p-6 bg-pink-300 bg-opacity-50 fixed top-[10%] left-1/2 transform -translate-x-1/2 rounded-lg border border-1 overflow-hidden">
         <h2 className="text-xl text-center font-bold mb-4">Settings</h2>
         {/* Gender Select */}
         <div className="">
@@ -129,7 +129,7 @@ function SettingsModal({
         {/* Taste Input */}
         <div className="mt-4 ">
           <input
-    className="bg-white h-[30px] w-full bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 font-normal border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 resize-none"
+    className="bg-white h-[30px] w-full bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 font-normal border-2 border-gray-300 rounded-lg focus:outline-none focus:border-red-500 resize-none"
     type="text"
             placeholder="Enter stuff you like..."
             value={userTaste}
@@ -140,7 +140,7 @@ function SettingsModal({
         <div className="text-center">
           <button
             onClick={onClose}
-      className="bg-pink-500 bg-opacity-70 hover:bg-pink-500 px-4 py-2 text-white font-bold rounded hover:bg-pink-700 transition duration-300 mt-4"
+      className="bg-red-500 bg-opacity-70 hover:bg-red-500 px-4 py-2 text-white font-bold rounded hover:bg-red-700 transition duration-300 mt-4"
       >
             Save
           </button>
