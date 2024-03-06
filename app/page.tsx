@@ -68,9 +68,9 @@ export default function Home() {
   };
 
   const readText = async (text: string) => {
+    setIsLoading(true); // Assuming you have an isLoading state to indicate loading
     try {
-      console.log("Reading text button pressed");
-      const response = await fetch("/api/openaiTTS", {
+      const response = await fetch("/api/textToSpeech", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,18 +78,7 @@ export default function Home() {
         body: JSON.stringify({ text }),
       });
 
-      if (!response.ok) {
-        // Handle non-OK responses gracefully
-        throw new Error(
-          `Failed to convert text to speech, status: ${response.status}`
-        );
-      }
-
-      // Ensure the response is JSON before trying to parse it
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Received non-JSON response from the server");
-      }
+      if (!response.ok) throw new Error("Failed to convert text to speech");
 
       const arrayBuffer = await response.arrayBuffer();
       const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
@@ -100,6 +89,9 @@ export default function Home() {
       audio.play();
     } catch (error) {
       console.error("Error reading text:", error);
+      // Handle error
+    } finally {
+      setIsLoading(false);
     }
   };
 
