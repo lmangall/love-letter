@@ -40,3 +40,17 @@
     transform: rotate(360deg);
   }
 }
+
+/* global.css */
+
+@font-face {
+  font-family: 'willow';
+  src: url('/fonts/willow.otf') format('opentype'),
+       url('/fonts/willow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'willow', sans-serif;
+}

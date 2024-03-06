@@ -7,6 +7,8 @@ import useFetchLoveStory from "../hooks/useFetchLoveStory";
 import useTranslateText from "../hooks/useTranslateText";
 import SettingsModal from "../components/SettingsModal";
 import stripHtml from "../utils/stripHtml";
+import LoveLetterBackground from "../components/LoveLetterBackground"; // Import your SVG component
+import "./globals.css"; // IS IT NECESSARY TO IMPORT HERE => layout.tsx
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -137,17 +139,13 @@ export default function Home() {
 
   return (
     <div className="background-image-container">
-      <Image
-        src="/background_4.png"
-        layout="fill"
-        objectFit="cover"
-        alt="Background Image"
-      />
+      <LoveLetterBackground />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
           <h1 className="mb-4 text-3xl text-white font-bold">
             Love letter, love language{" "}
           </h1>
+          <h1 className="mb-4  font-willow">willow font</h1>{" "}
           <p className="mb-4 font-semibold">
             An AI powered tool to get some luv while learning a foreign language
             🧠.
@@ -238,7 +236,7 @@ export default function Home() {
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
           {/* right column*/}
-          <div className="flex-1 bg-white bg-opacity-40 rounded-lg p-4 rounded-lg border border-1 whitespace-pre-wrap">
+          <div className="bg-white w-full h-5/6  bg-opacity-40  p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm">
             <div>
               {translations.length > 0 ? (
                 <div>
@@ -253,11 +251,11 @@ export default function Home() {
                   )}
                 </div>
               ) : (
-                <span className="display: flex text-grey align-items: center">
+                <div className="display: flex h-full text-grey overflow-auto">
                   Select or highlight text from the love letter to see its
                   translation appear 👇 here 👇. You can learn the vocabulary or
                   email it to yourself for future review 🚀
-                </span>
+                </div>
               )}
             </div>
           </div>
