@@ -237,7 +237,7 @@ export default function Home() {
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
           {/* right column*/}
           <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-            <div className="mb-4 bg-white w-full h-5/6 bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto">
+            <div className="mb-4 bg-white w-full h-5/6 bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-2 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto">
               <div>
                 {translations.length > 0 ? (
                   <div>
@@ -264,18 +264,20 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <button
-              onClick={handleCopyNotes}
-              className="bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
-            >
-              Copy Translations
-            </button>
-            <button
-              onClick={handleEmailTranslations}
-              className="bg-blue-500 hover:bg-blue-600 py-2 text-white font-bold rounded shadow-sm transition duration-150"
-            >
-              Email Translations
-            </button>
+            <div className="flex justify-between gap-2">
+              <button
+                onClick={handleCopyNotes}
+                className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150 justify-center "
+              >
+                Copy Translations
+              </button>
+              <button
+                onClick={handleEmailTranslations}
+                className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150 justify-center "
+              >
+                Email Translations
+              </button>
+            </div>
           </div>
         </div>
       </div>
