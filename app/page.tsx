@@ -236,41 +236,47 @@ export default function Home() {
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
           {/* right column*/}
-          <div className="bg-white w-full h-5/6  bg-opacity-40  p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm">
-            <div>
-              {translations.length > 0 ? (
-                <div>
-                  {translations.map((translation, index) => (
-                    <p
-                      key={index}
-                      dangerouslySetInnerHTML={{ __html: translation }}
-                    />
-                  ))}
-                  {translationError && (
-                    <p className="text-red-500">{translationError}</p>
-                  )}
-                </div>
-              ) : (
-                <div className="display: flex h-full text-grey overflow-auto">
-                  Select or highlight text from the love letter to see its
-                  translation appear 👇 here 👇. You can learn the vocabulary or
-                  email it to yourself for future review 🚀
-                </div>
-              )}
+          <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
+            <div className="mb-4 bg-white w-full h-5/6 bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 p-4 text-base font-normal border-2 border-gray-300 rounded-lg shadow-sm resize-none overflow-auto">
+              <div>
+                {translations.length > 0 ? (
+                  <div>
+                    {translations.map((translation, index) => (
+                      <p
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: translation }}
+                      />
+                    ))}
+                    {translationError && (
+                      <p className="text-red-500">{translationError}</p>
+                    )}
+                  </div>
+                ) : (
+                  <div>
+                    {
+                      <span className="text-grey">
+                        Select or highlight text from the love letter to see its
+                        translation appear 👇 here 👇. You can learn the
+                        vocabulary or email it to yourself for future review 🚀
+                      </span>
+                    }
+                  </div>
+                )}
+              </div>
             </div>
+            <button
+              onClick={handleCopyNotes}
+              className="bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
+            >
+              Copy Translations
+            </button>
+            <button
+              onClick={handleEmailTranslations}
+              className="bg-blue-500 hover:bg-blue-600 py-2 text-white font-bold rounded shadow-sm transition duration-150"
+            >
+              Email Translations
+            </button>
           </div>
-          <button
-            onClick={handleCopyNotes}
-            className="bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
-          >
-            Copy Translations
-          </button>
-          <button
-            onClick={handleEmailTranslations}
-            className="bg-blue-500 hover:bg-blue-600 py-2 text-white font-bold rounded shadow-sm transition duration-150"
-          >
-            Email Translations
-          </button>
         </div>
       </div>
       <div
