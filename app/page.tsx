@@ -188,7 +188,7 @@ export default function Home() {
           </div>
           <button
             onClick={handleOpenModal}
-            className="mb-4 h-10 w-full bg-gray-50 bg-opacity-30  text-slate-400 border border-1  rounded hover:bg-pink-600 mt-4"
+            className="mb-4 h-10 w-full bg-gray-50 bg-opacity-30  text-slate-400 border border-2  rounded hover:border-red-500 mt-4"
           >
             Preferences
           </button>
@@ -219,7 +219,7 @@ export default function Home() {
                   isHot
                 ).finally(() => setIsLoading(false)); // Reset loading state
               }}
-              className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150 flex justify-center items-center"
+              className="w-full mt-2 bg-white/75 py-2 text-red-500 font-bold rounded shadow-sm transition duration-150 border border-2 hover:border-red-500"
             >
               {isLoading && (
                 <div className="spinner"></div> // Spinner appears next to the text
@@ -228,7 +228,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => readText(loveStory)}
-              className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
+              className="w-full mt-2 bg-white/75 py-2 text-red-500 font-bold rounded shadow-sm transition duration-150 border border-2 hover:border-red-500"
             >
               {isLoadingRead && (
                 <div className="spinner"></div> // Spinner appears next to the text
@@ -274,13 +274,13 @@ export default function Home() {
             <div className="flex justify-between gap-2">
               <button
                 onClick={handleCopyNotes}
-                className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150 justify-center "
+                className="w-full mt-2 bg-white/75 py-2 text-red-500 font-bold rounded shadow-sm transition duration-150 border border-2 hover:border-red-500"
               >
                 Copy Translations
               </button>
               <button
                 onClick={handleEmailTranslations}
-                className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150 justify-center "
+                className="w-full mt-2 bg-white/75 py-2 text-red-500 font-bold rounded shadow-sm transition duration-150 border border-2 hover:border-red-500"
               >
                 Email Translations
               </button>
