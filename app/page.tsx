@@ -68,7 +68,7 @@ export default function Home() {
   };
 
   const readText = async (text: string) => {
-    setIsLoading(true); // Assuming you have an isLoading state to indicate loading
+    setIsLoadingRead(true);
     try {
       const response = await fetch("/api/textToSpeech", {
         method: "POST",
@@ -215,9 +215,9 @@ export default function Home() {
               onClick={() => readText(loveStory)}
               className="w-full mt-2 bg-pink-500 hover:bg-pink-500 py-2 text-white font-bold rounded shadow-sm transition duration-150"
             >
-              {/* {isLoadingRead && (
+              {isLoadingRead && (
                 <div className="spinner"></div> // Spinner appears next to the text
-              )} */}
+              )}
               Read Text
             </button>
           </div>
