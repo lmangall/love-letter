@@ -92,21 +92,14 @@ Code for a button:
 
 <details>
   <summary>Dropdown 1</summary>
-  
   <br/>
-
 content
-
 </details>
-
 <br/>
-
 <details>
   <summary>Dropdown 2</summary>
-  <br/>
-  
+  <br/>  
   Content
-
 </details>
 
 ```bash
