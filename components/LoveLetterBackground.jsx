@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const LoveLetterBackground = (props) => (
-  <svg
-    id="Layer_1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1920 1080"
-    xmlSpace="preserve"
-    className="absolute w-full h-full" // Tailwind classes to make it full screen
-    style={{ backgroundColor: 'pink' }} // Inline style for background color
+const LoveLetterBackground = (props) => {
+  const [isMobile, setIsMobile] = useState(false);
 
-    {...props} // Spreading any additional props passed to the component
-  >
-      <path
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 480);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (isMobile) return null; // Don't render the SVG on mobile
+
+  return (
+    <svg
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1920 1080"
+      xmlSpace="preserve"
+      className="absolute w-full h-full"
+      style={{ backgroundColor: 'pink' }}
+      {...props}
+    >
+       <path
 	        style={{
 				fill: 'none', // Remove fill color
 				stroke: 'red', // Set stroke (outline) color
@@ -29,8 +44,9 @@ const LoveLetterBackground = (props) => (
           d="M60.57 653.46c-24.27 0-44.13-20.58-44.13-45.72V59.06c0-25.15 19.86-45.72 44.13-45.72h88.25c24.27 0 44.13 20.58 44.13 45.72v365.78c0 25.15 19.86 45.72 44.13 45.72h176.51c24.27 0 44.13 20.58 44.13 45.72v91.45c0 25.15-19.86 45.72-44.13 45.72H60.57zM674.82 653.46c-97.52 0-176.51-81.84-176.51-182.89V196.23c0-101.05 78.99-182.89 176.51-182.89h88.25c97.52 0 176.51 81.84 176.51 182.89v274.34c0 101.05-78.99 182.89-176.51 182.89h-88.25zm66.19-182.89c12.36 0 22.06-10.06 22.06-22.86V219.09c0-12.8-9.71-22.86-22.06-22.86h-44.13c-12.36 0-22.06 10.06-22.06 22.86V447.7c0 12.8 9.71 22.86 22.06 22.86h44.13zM1068.44 653.46c-48.54 0-88.25-41.15-88.25-91.45V59.06c0-25.15 19.86-45.72 44.13-45.72h88.25c24.27 0 44.13 20.58 44.13 45.72V447.7c0 12.8 9.71 22.86 22.06 22.86h44.13c12.36 0 22.06-10.06 22.06-22.86V59.06c0-25.15 19.86-45.72 44.13-45.72h88.25c24.27 0 44.13 20.58 44.13 45.72v411.51c0 101.05-78.99 182.89-176.51 182.89h-176.51zM1550.3 653.46c-48.54 0-88.25-41.15-88.25-91.45V104.78c0-50.29 39.71-91.45 88.25-91.45h308.89c24.27 0 44.13 20.58 44.13 45.72v91.45c0 25.15-19.86 45.72-44.13 45.72h-198.57c-12.36 0-22.06 10.06-22.06 22.86v45.72c0 12.8 9.71 22.86 22.06 22.86h110.32c24.27 0 44.13 20.58 44.13 45.72 0 25.15-19.86 45.72-44.13 45.72h-110.32c-12.36 0-22.06 10.06-22.06 22.86v45.72c0 12.8 9.71 22.86 22.06 22.86h198.57c24.27 0 44.13 20.58 44.13 45.72v91.45c0 25.15-19.86 45.72-44.13 45.72H1550.3z"
         />
       </g>
-    {/* More paths or other SVG elements */}
-  </svg>
-);
+
+    </svg>
+  );
+};
 
 export default LoveLetterBackground;

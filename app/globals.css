@@ -10,22 +10,23 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif; /* Utilizing the Inter font */
+  font-family: 'Inter', sans-serif;
+  background-color: pink; /* Ensure full background is pink */
 }
 
 
+/* Styles for tablets and below */
 @media (max-width: 768px) {
-  /* Styles for tablets and below */
   body {
     padding: 20px;
   }
 }
 
+/* Styles for mobile devices */
 @media (max-width: 480px) {
-  /* Styles for mobile devices */
   .grid {
     grid-template-columns: 1fr;
-  } /* This closing brace was missing */
+  }
   .p-24 {
     padding: 10px;
   }
