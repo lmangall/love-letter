@@ -17,8 +17,8 @@
     "openai": "^4.28.0",
     "page": "^1.11.6",
     "pnpm": "^8.15.4",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "swr": "^2.2.5"
   },
   "devDependencies": {

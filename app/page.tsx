@@ -175,7 +175,7 @@ export default function Home() {
             isHot={isHot}
             setIsHot={setIsHot}
           />
-          <div className="flex flex-row space-x-4">
+          <div className="flex-col space-x-4">
             <InputField
               placeholder="Enter your city."
               value={userCity}
@@ -205,7 +205,7 @@ export default function Home() {
               </span>
             )}
           </div>
-          <div className="flex justify-between gap-2">
+          <div className="-col justify-between gap-2">
             <button
               onClick={() => {
                 setIsLoading(true); // Trigger loading state
@@ -274,7 +274,7 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <div className="flex justify-between gap-2">
+            <div className="flex-col justify-between gap-2">
               <button
                 onClick={handleCopyNotes}
                 className="w-full mt-2 bg-white/75 py-2 text-red-500 font-bold rounded shadow-sm transition duration-150 border border-2 hover:border-red-500"
