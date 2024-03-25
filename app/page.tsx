@@ -237,9 +237,11 @@ export default function Home() {
               Read Text
             </button>
           </div>
+          {/* 
           <audio id="audioPlayer" src="" hidden></audio>{" "}
-          {/* Hidden until a source is set */}
           <button onClick={togglePlayPause}>Pause button WIP</button>
+
+ */}
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
