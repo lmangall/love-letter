@@ -73,3 +73,26 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+/*/below is for the logo*/
+.logo-container {
+  max-width: 100px; /* or any maximum size you prefer */
+  margin: 0 auto; /* Center the logo */
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    max-width: 300px; /* Smaller size for tablets and below */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    max-width: 50px; /* Even smaller size for mobile devices */
+  }
+}

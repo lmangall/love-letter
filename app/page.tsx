@@ -121,7 +121,6 @@ export default function Home() {
             audioRef.current.src = audioUrl;
           } catch (error) {
             console.error("Error fetching audio:", error);
-            // Handle error (e.g., display an error message to the user)
             return;
           }
         }
@@ -138,7 +137,7 @@ export default function Home() {
       <LoveLetterBackground />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          <div className="mb-2 logo-container">
+          <div className="logo-container-2">
             <a
               href="https://frenchezleo.com"
               target="_blank"
@@ -148,9 +147,10 @@ export default function Home() {
                 src="/love_letter_logo.png"
                 alt="Frenchez Leo Logo"
                 width={500}
-                height={25}
+                height={50}
                 priority
                 layout="responsive"
+                className="logo"
               />
             </a>
           </div>
