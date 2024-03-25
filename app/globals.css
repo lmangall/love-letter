@@ -13,6 +13,7 @@ body {
   font-family: 'Inter', sans-serif; /* Utilizing the Inter font */
 }
 
+
 @media (max-width: 768px) {
   /* Styles for tablets and below */
   body {
@@ -24,11 +25,12 @@ body {
   /* Styles for mobile devices */
   .grid {
     grid-template-columns: 1fr;
+  } /* This closing brace was missing */
   .p-24 {
     padding: 10px;
   }
 }
-}
+
 
 @layer utilities {
   .text-balance {

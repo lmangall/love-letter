@@ -133,7 +133,7 @@ export default function Home() {
   };
 
   return (
-    <div className="background-image-container">
+    <div className="relative">
       <LoveLetterBackground />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
