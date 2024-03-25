@@ -33,6 +33,10 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
+  const handleAboutModal = () => {
+    // Implement actions for the "About" button (e.g., navigate to a new page)
+  };
+
   const { translateText, translations, translationError } = useTranslateText();
 
   const handleTextSelection = async () => {
@@ -134,9 +138,6 @@ export default function Home() {
       <LoveLetterBackground />
       <div className="grid  grid-cols-2 w-2/3 gap-4 content-center	m-auto p-24 justify-center ">
         <div className="p-6 backdrop-blur-sm bg-white bg-opacity-40 rounded-lg border border-1 rgba(255, 255, 255, 0.1) h-[80vh]">
-          {/* <h1 className="mb-4 text-3xl text-white font-bold">
-            Love letter, love language{" "}
-          </h1> */}
           <div className="mb-2 logo-container">
             <a
               href="https://frenchezleo.com"
@@ -149,10 +150,10 @@ export default function Home() {
                 width={500}
                 height={25}
                 priority
+                layout="responsive"
               />
             </a>
           </div>
-          {/* <h1 className="mb-4  font-willow">Awillow font</h1>{" "} */}
           <p className="mb-4 font-semibold">
             An AI powered tool to get some luv while learning a foreign language
             🧠.
@@ -287,29 +288,38 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="logo-container"
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          zIndex: 1000,
-        }}
-      >
-        <a
-          href="https://frenchezleo.com"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          className="logo-container"
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            zIndex: 1000,
+          }}
         >
-          <Image
-            src="/logo.png"
-            alt="Frenchez Leo Logo"
-            width={50}
-            height={25}
-            priority
-          />
-        </a>
+          <a
+            href="https://frenchezleo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/logo.png"
+              alt="Frenchez Leo Logo"
+              width={50}
+              height={25}
+              priority
+              layout="responsive"
+            />
+          </a>
+          <div
+            className="position-fixed bottom-0 left-40 right-40 z-index-100"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <button onClick={handleAboutModal} className="about-button">
+              About
+            </button>
+          </div>
+        </div>
       </div>
       {error && <p className="text-red-500">{error}</p>}
     </div>

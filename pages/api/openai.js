@@ -34,7 +34,7 @@ export default async function handleGenerateClick(req, res) {
     loveRequest += ` Include queer elements in the story.`;
   }
   if (isHot) {
-    loveRequest += ` and Make it hot.`;
+    loveRequest += ` and Make it really hot (sexually).`;
   }
 
   console.log("Prompt sent to OpenAI:", loveRequest);

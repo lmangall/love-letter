@@ -7,6 +7,29 @@
   background-image: var(--gradient-stops-blue-sky);
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Utilizing the Inter font */
+}
+
+@media (max-width: 768px) {
+  /* Styles for tablets and below */
+  body {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for mobile devices */
+  .grid {
+    grid-template-columns: 1fr;
+  .p-24 {
+    padding: 10px;
+  }
+}
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
