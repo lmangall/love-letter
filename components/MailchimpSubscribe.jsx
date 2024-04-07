@@ -3,6 +3,18 @@ import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 const url = "https://frenchezleo.us18.list-manage.com/subscribe/post?u=78c0ad5362b2cb0b6678423a4&amp;id=b4b4c73250&amp;f_id=002b10e1f0";
 
+// Inside MailchimpSubscribe.jsx or wherever the SimpleForm is defined
+const buttonStyle = {
+	backgroundColor: 'rgba(255, 255, 255, 0.75)',
+	color: 'rgba(0, 0, 0, 0.7)',
+	// border: '2px solid rgba(255, 0, 0, 0.5)',
+	borderRadius: '8px',
+	padding: '4px 4px',
+	cursor: 'pointer',
+	margin: '20px',
+  };
+
+  
 const SimpleForm = ({ onFormSubmit, subscriptionStatus }) => {
 	const handleSubmit = (event) => {
 	  event.preventDefault();
@@ -15,11 +27,14 @@ const SimpleForm = ({ onFormSubmit, subscriptionStatus }) => {
   
 	return (
 	  <form onSubmit={handleSubmit}>
-		<input type="email" name="email" placeholder="Your email" required />
-		<button type="submit" disabled={subscriptionStatus === "success"}>{buttonText}</button>
+		<input className="bg-white h-[30px] bg-opacity-40 hover:bg-purple-100 hover:bg-opacity-20 font-normal border-2 border-white-600 rounded-lg focus:outline-none focus:border-red-100 resize-none"type="email" name="email" placeholder="Your email" required />
+		<button type="submit" style={buttonStyle} disabled={subscriptionStatus === "success"}>
+		  {buttonText}
+		</button>
 	  </form>
 	);
   };
+  
   
 // use the render prop and your custom form
 const MailSubscribe = () => {
