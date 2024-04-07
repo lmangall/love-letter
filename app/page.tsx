@@ -329,7 +329,7 @@ export default function Home() {
               isOpen={isAboutModalOpen}
               onClose={() => setIsAboutModalOpen(false)}
             />
-            ;<button onClick={handleOpenAboutModal}>About</button>
+            <button onClick={handleOpenAboutModal}>About</button>
           </div>
         </div>
       </div>
