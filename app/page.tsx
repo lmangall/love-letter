@@ -9,6 +9,7 @@ import SettingsModal from "../components/SettingsModal";
 import stripHtml from "../utils/stripHtml";
 import LoveLetterBackground from "../components/LoveLetterBackground"; // Import your SVG component
 import "./globals.css"; // IS IT NECESSARY TO IMPORT HERE => layout.tsx
+import AboutModal from "../components/AboutModal";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,11 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingRead, setIsLoadingRead] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
 
+  const handleOpenAboutModal = () => setIsAboutModalOpen(true);
+
+  //modify this so it reflexts the settings modal
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -33,9 +38,9 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  const handleAboutModal = () => {
-    // Implement actions for the "About" button (e.g., navigate to a new page)
-  };
+  // const handleAboutModal = () => {
+  //   // Implement actions for the "About" button (e.g., navigate to a new page)
+  // };
 
   const { translateText, translations, translationError } = useTranslateText();
 
@@ -175,7 +180,7 @@ export default function Home() {
             isHot={isHot}
             setIsHot={setIsHot}
           />
-          <div className="flex-col space-x-4">
+          <div className="flex flex-row space-x-4">
             <InputField
               placeholder="Enter your city."
               value={userCity}
@@ -205,7 +210,7 @@ export default function Home() {
               </span>
             )}
           </div>
-          <div className="-col justify-between gap-2">
+          <div className="flex justify-between gap-2">
             <button
               onClick={() => {
                 setIsLoading(true); // Trigger loading state
@@ -241,7 +246,7 @@ export default function Home() {
           <audio id="audioPlayer" src="" hidden></audio>{" "}
           <button onClick={togglePlayPause}>Pause button WIP</button>
 
- */}
+  */}
         </div>
         {/* New column with two rows */}
         <div className="flex flex-col top-[10%] backdrop-blur-sm bg-white-300/30 space-y-4">
@@ -274,7 +279,7 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <div className="flex-col justify-between gap-2">
+            <div className="flex justify-between gap-2">
               <button
                 onClick={handleCopyNotes}
                 className="w-full mt-2 bg-white/75 py-2 text-red-500 font-bold rounded shadow-sm transition duration-150 border border-2 hover:border-red-500"
@@ -317,9 +322,14 @@ export default function Home() {
             className="position-fixed bottom-0 left-40 right-40 z-index-100"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <button onClick={handleAboutModal} className="about-button">
+            {/* <button onClick={handleAboutModal} className="about-button">
               About
-            </button>
+            </button> */}
+            <AboutModal
+              isOpen={isAboutModalOpen}
+              onClose={() => setIsAboutModalOpen(false)}
+            />
+            ;<button onClick={handleOpenAboutModal}>About</button>
           </div>
         </div>
       </div>

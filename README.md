@@ -107,31 +107,44 @@ tree -I 'node_modules' -L 2
 .
 ├── README.md
 ├── app
-│ ├── globals.css
-│ ├── layout.tsx
-│ └── page.tsx
-├── background.jpg
+│   ├── favicon.ico
+│   ├── former_favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
 ├── components
-│ ├── Button.tsx
-│ └── InputField.tsx
-├── favicon.ico
+│   ├── InputField.tsx
+│   ├── LoveLetterBackground.jsx
+│   ├── SelectField.tsx
+│   └── SettingsModal.jsx
 ├── hooks
-│ └── useFetchLoveStory.ts
+│   ├── useFetchLoveStory.ts
+│   └── useTranslateText.ts
+├── love_letter_logo.ai
 ├── next-env.d.ts
 ├── next.config.mjs
 ├── package-lock.json
 ├── package.json
 ├── pages
-│ └── api
+│   └── api
+├── pnpm-lock.yaml
 ├── postcss.config.js
 ├── public
-│ ├── Hypercolor Gradient.jpeg
-│ ├── background.jpg
-│ ├── background_2.png
-│ ├── background_3.png
-│ ├── background_4.png
-│ └── logo.png
-├── stickers literks-05.png
+│   ├── Hypercolor Gradient.jpeg
+│   ├── background.jpg
+│   ├── background_2.png
+│   ├── background_3.png
+│   ├── background_4.png
+│   ├── favicon.png
+│   ├── fonts
+│   ├── logo.png
+│   ├── logo_clear.png
+│   └── love_letter_logo.png
+├── speech.mp3
 ├── tailwind.config.ts
-└── tsconfig.json
+├── tsconfig.json
+└── utils
+    └── stripHtml.ts
+
+9 directories, 32 files
 ```
