@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-
+import { MailSubscribe } from './MailchimpSubscribe'; // Make sure the path is correct
 
 const customStyles = {
   content: {
@@ -11,25 +11,26 @@ const customStyles = {
   },
 };
 
-
 const AboutModal = ({ isOpen, onClose }) => {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="About Modal"
-      style={customStyles} // Use custom styles
+      style={customStyles}
     >
       <h2>About This App</h2>
       <p>This app is designed to help users learn new languages through the power of AI-generated love letters.</p>
+      {/* Here we include the MailSubscribe component for newsletter subscription */}
+      <MailSubscribe />
       <button onClick={onClose} style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.75)', // Light background for the button
-        color: 'rgba(0, 0, 0, 0.7)', // Slightly dim text color
-        border: '2px solid rgba(255, 0, 0, 0.5)', // Reddish border
-        borderRadius: '8px', // Rounded corners for the button
-        padding: '8px 16px', // Padding inside the button
-        cursor: 'pointer', // Cursor to pointer on hover
-        marginTop: '20px', // Space above the button
+        backgroundColor: 'rgba(255, 255, 255, 0.75)', 
+        color: 'rgba(0, 0, 0, 0.7)', 
+        border: '2px solid rgba(255, 0, 0, 0.5)', 
+        borderRadius: '8px',
+        padding: '8px 16px',
+        cursor: 'pointer',
+        marginTop: '20px',
       }}>
         Close
       </button>
