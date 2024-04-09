@@ -35,6 +35,7 @@ const AboutModal = ({ isOpen, onClose }) => {
       style={customStyles}
     >
       <h2 style={{ textAlign: 'center' }}>About This App</h2>
+      <h2 style={{ textAlign: 'center' }}>🥖 + 🍑 = 💌</h2>
       <p style={{ textAlign: 'center' }}>This app is designed to help users learn new languages through the power of AI-generated love letters.</p>
       <p style={{ textAlign: 'center', marginBottom: '20px' }}>
         This app marries my background in French education with my new coding skills.
