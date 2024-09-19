@@ -2,6 +2,8 @@
 
 [Live demo](https://langgenie.xyz/loveletter)
 
+***Edit: This was my very first React app, even though I am proud of the ideas and the result I am a bit embarassed by the quality of the code itself and the organisation of the work (commits, architecture, test suite...).*** 
+
 A web app designed to help you learn a language, initially thought for French, hence the love-theme 🥖 The app is inclusive of all gender identities and sexual orientations 🏳️‍🌈 and is not afraid to produce HOT content...
 
     					🥖 + 🍑 = 💌
